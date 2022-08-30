@@ -7,9 +7,9 @@
         "vue/setup-compiler-macros":true
     },
     "extends": [
+        "eslint:recommended",
         "plugin:vue/vue3-recommended",
-        "plugin:@typescript-eslint/recommended",
-        "eslint:recommended"
+        "plugin:@typescript-eslint/recommended"
     ],
     "overrides": [
     ],
