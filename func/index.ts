@@ -1,3 +1,4 @@
 import sum from './sum';
+import isNaN from './Base/isNaN';
 
-export default sum
+export {sum, isNaN}
