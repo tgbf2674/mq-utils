@@ -1,4 +1,4 @@
-import { isNaN, isFinite, isUndefined } from '../func'
+import { isNaN, isFinite, isUndefined, isArray, isFloat } from '../func'
 describe('Base function', () => {
   test ('isNaN()', () => {
     expect(isNaN()).toEqual(false)
@@ -43,5 +43,35 @@ describe('Base function', () => {
     expect(isUndefined('undefined')).toEqual(false)
     expect(isUndefined(undefined)).toEqual(true)
     expect(isUndefined()).toEqual(true)
+  })
+  test ('isArray()', () => {
+    expect(isArray(0)).toEqual(false)
+    expect(isArray(-2)).toEqual(false)
+    expect(isArray(false)).toEqual(false)
+    expect(isArray({})).toEqual(false)
+    expect(isArray(/\d/)).toEqual(false)
+    expect(isArray(null)).toEqual(false)
+    expect(isArray('null')).toEqual(false)
+    expect(isArray('undefined')).toEqual(false)
+    expect(isArray(undefined)).toEqual(false)
+    expect(isArray()).toEqual(false)
+    expect(isArray([])).toEqual(true)
+    expect(isArray([4, 2])).toEqual(true)
+  })
+  test ('isFloat()', () => {
+    expect(isFloat(0)).toEqual(false)
+    expect(isFloat(-2)).toEqual(false)
+    expect(isFloat(false)).toEqual(false)
+    expect(isFloat({})).toEqual(false)
+    expect(isFloat(/\d/)).toEqual(false)
+    expect(isFloat(null)).toEqual(false)
+    expect(isFloat('null')).toEqual(false)
+    expect(isFloat('undefined')).toEqual(false)
+    expect(isFloat(undefined)).toEqual(false)
+    expect(isFloat()).toEqual(false)
+    expect(isFloat('2.111')).toEqual(false)
+    expect(isFloat(2.0)).toEqual(false)
+    expect(isFloat(4.1231313)).toEqual(true)
+    expect(isFloat(-2.2)).toEqual(true)
   })
 })
