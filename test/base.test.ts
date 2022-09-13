@@ -1,6 +1,6 @@
-import { isNaN } from '../func'
+import { isNaN, isFinite, isUndefined } from '../func'
 describe('Base function', () => {
-  test ('isNaN', () => {
+  test ('isNaN()', () => {
     expect(isNaN()).toEqual(false)
     expect(isNaN(0)).toEqual(false)
     expect(isNaN(-1)).toEqual(false)
@@ -14,5 +14,34 @@ describe('Base function', () => {
     expect(isNaN('NAN')).toEqual(false)
     expect(isNaN(/\d/)).toEqual(false)
     expect(isNaN(NaN)).toEqual(true)
+  })
+  test ('isFinite()', () => {
+    expect(isFinite()).toEqual(false)
+    expect(isFinite(null)).toEqual(false)
+    expect(isFinite(undefined)).toEqual(false)
+    expect(isFinite(NaN)).toEqual(false)
+    expect(isFinite({})).toEqual(false)
+    expect(isFinite([])).toEqual(false)
+    expect(isFinite(/\d/)).toEqual(false)
+    expect(isFinite('num')).toEqual(false)
+    expect(isFinite('5')).toEqual(false)
+    expect(isFinite('')).toEqual(false)
+    expect(isFinite(-2)).toEqual(true)
+    expect(isFinite(0)).toEqual(true)
+    expect(isFinite(88)).toEqual(true)
+    expect(isFinite(2e64)).toEqual(true)
+  })
+  test ('isUndefined()', () => {
+    expect(isUndefined(0)).toEqual(false)
+    expect(isUndefined(-2)).toEqual(false)
+    expect(isUndefined(false)).toEqual(false)
+    expect(isUndefined({})).toEqual(false)
+    expect(isUndefined([])).toEqual(false)
+    expect(isUndefined(/\d/)).toEqual(false)
+    expect(isUndefined(null)).toEqual(false)
+    expect(isUndefined('null')).toEqual(false)
+    expect(isUndefined('undefined')).toEqual(false)
+    expect(isUndefined(undefined)).toEqual(true)
+    expect(isUndefined()).toEqual(true)
   })
 })
