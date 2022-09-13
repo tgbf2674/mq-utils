@@ -1,4 +1,4 @@
-import { isNaN, isFinite, isUndefined, isArray, isFloat } from '../func'
+import {isNaN, isFinite, isUndefined, isArray, isFloat, isInteger, isFunction} from '../func';
 describe('Base function', () => {
   test ('isNaN()', () => {
     expect(isNaN()).toEqual(false)
@@ -73,5 +73,41 @@ describe('Base function', () => {
     expect(isFloat(2.0)).toEqual(false)
     expect(isFloat(4.1231313)).toEqual(true)
     expect(isFloat(-2.2)).toEqual(true)
+  })
+  test ('isInteger()', () => {
+    expect(isInteger(0)).toEqual(true)
+    expect(isInteger(-2)).toEqual(true)
+    expect(isInteger(false)).toEqual(false)
+    expect(isInteger({})).toEqual(false)
+    expect(isInteger(/\d/)).toEqual(false)
+    expect(isInteger(null)).toEqual(false)
+    expect(isInteger('null')).toEqual(false)
+    expect(isInteger('undefined')).toEqual(false)
+    expect(isInteger(undefined)).toEqual(false)
+    expect(isInteger()).toEqual(false)
+    expect(isInteger('2.111')).toEqual(false)
+    expect(isInteger(2.0)).toEqual(true)
+    expect(isInteger(4.1231313)).toEqual(false)
+    expect(isInteger(-2.2)).toEqual(false)
+  })
+  test ('isFunction()', () => {
+    expect(isFunction(false)).toEqual(false)
+    expect(isFunction({})).toEqual(false)
+    expect(isFunction(/\d/)).toEqual(false)
+    expect(isFunction(null)).toEqual(false)
+    expect(isFunction('null')).toEqual(false)
+    expect(isFunction('undefined')).toEqual(false)
+    expect(isFunction(undefined)).toEqual(false)
+    expect(isFunction()).toEqual(false)
+    expect(isFunction('2.111')).toEqual(false)
+    expect(isFunction(2.0)).toEqual(false)
+    expect(isFunction(4.1231313)).toEqual(false)
+    expect(isFunction(-2.2)).toEqual(false)
+    const method = () => {
+      expect(isFunction(() => {
+        console.log(1)
+      })).toEqual(true)
+    }
+    method()
   })
 })
