@@ -9,7 +9,18 @@ import {
   isBoolean,
   isString,
   isNumber,
-  isRegExp, isObject, isRealObject, isDate, isValidDate, isError, isTypeError, isEmpty
+  isRegExp,
+  isObject,
+  isRealObject,
+  isDate,
+  isValidDate,
+  isError,
+  isTypeError,
+  isEmpty,
+  isNull,
+  isSymbol,
+  isElement,
+  isDocument, isWindow, isFormData, isMap, isWeakMap, isSet, isWeakSet, isLeapYear
 } from '../func';
 describe('Base function', () => {
   test ('isNaN()', () => {
@@ -435,5 +446,481 @@ describe('Base function', () => {
     expect(isEmpty([1,2,3])).toEqual(false)
     expect(isEmpty(4.1231313)).toEqual(false)
     expect(isEmpty(-2.2)).toEqual(false)
+  })
+  test ('isNull()', () => {
+    expect(isNull(0)).toEqual(false)
+    expect(isNull(-2)).toEqual(false)
+    expect(isNull(false)).toEqual(false)
+    expect(isNull(true)).toEqual(false)
+    expect(isNull({})).toEqual(false)
+    expect(isNull(/\d/)).toEqual(false)
+    expect(isNull([])).toEqual(false)
+    expect(isNull(null)).toEqual(true)
+    const testSymbol = function () {
+      const item = Symbol('123')
+      expect (isNull(item)).toEqual(false)
+    }
+    testSymbol()
+    const testDate = function () {
+      const item = new Date()
+      expect (isNull(item)).toEqual(false)
+    }
+    testDate()
+    const testDate2 = function () {
+      const item = new Date('abc')
+      expect (isNull(item)).toEqual(false)
+    }
+    testDate2()
+    const testDate3 = function () {
+      const item = new Error()
+      expect (isNull(item)).toEqual(false)
+    }
+    testDate3()
+    const testDate4 = function () {
+      const item = new TypeError()
+      expect (isNull(item)).toEqual(false)
+    }
+    testDate4()
+    expect(isNull('null')).toEqual(false)
+    expect(isNull('undefined')).toEqual(false)
+    expect(isNull(undefined)).toEqual(false)
+    expect(isNull()).toEqual(false)
+    expect(isNull('2.111')).toEqual(false)
+    expect(isNull([1,2,3])).toEqual(false)
+    expect(isNull(4.1231313)).toEqual(false)
+    expect(isNull(-2.2)).toEqual(false)
+  })
+  test ('isSymbol()', () => {
+    expect(isSymbol(0)).toEqual(false)
+    expect(isSymbol(-2)).toEqual(false)
+    expect(isSymbol(false)).toEqual(false)
+    expect(isSymbol(true)).toEqual(false)
+    expect(isSymbol({})).toEqual(false)
+    expect(isSymbol(/\d/)).toEqual(false)
+    expect(isSymbol([])).toEqual(false)
+    expect(isSymbol(null)).toEqual(false)
+    const testSymbol = function () {
+      const item = Symbol('123')
+      expect (isSymbol(item)).toEqual(true)
+    }
+    testSymbol()
+    const testDate = function () {
+      const item = new Date()
+      expect (isSymbol(item)).toEqual(false)
+    }
+    testDate()
+    const testDate2 = function () {
+      const item = new Date('abc')
+      expect (isSymbol(item)).toEqual(false)
+    }
+    testDate2()
+    const testDate3 = function () {
+      const item = new Error()
+      expect (isSymbol(item)).toEqual(false)
+    }
+    testDate3()
+    const testDate4 = function () {
+      const item = new TypeError()
+      expect (isSymbol(item)).toEqual(false)
+    }
+    testDate4()
+    expect(isSymbol('null')).toEqual(false)
+    expect(isSymbol('undefined')).toEqual(false)
+    expect(isSymbol(undefined)).toEqual(false)
+    expect(isSymbol()).toEqual(false)
+    expect(isSymbol('2.111')).toEqual(false)
+    expect(isSymbol([1,2,3])).toEqual(false)
+    expect(isSymbol(4.1231313)).toEqual(false)
+    expect(isSymbol(-2.2)).toEqual(false)
+  })
+  test ('isElement()', () => {
+    expect(isElement(0)).toEqual(false)
+    expect(isElement(-2)).toEqual(false)
+    expect(isElement(false)).toEqual(false)
+    expect(isElement(true)).toEqual(false)
+    expect(isElement({})).toEqual(false)
+    expect(isElement(/\d/)).toEqual(false)
+    expect(isElement([])).toEqual(false)
+    expect(isElement(null)).toEqual(false)
+    const testSymbol = function () {
+      const item = Symbol('123')
+      expect (isElement(item)).toEqual(false)
+    }
+    testSymbol()
+    const testDate = function () {
+      const item = new Date()
+      expect (isElement(item)).toEqual(false)
+    }
+    testDate()
+    const test2 = function () {
+      const item = new Date('abc')
+      expect (isElement(item)).toEqual(false)
+    }
+    test2()
+    const test3 = function () {
+      const item = new Error()
+      expect (isElement(item)).toEqual(false)
+    }
+    test3()
+    const test4 = function () {
+      const item = new TypeError()
+      expect (isElement(item)).toEqual(false)
+    }
+    test4()
+    const test5 = function () {
+      const item = document.createElement('div')
+      expect (isElement(item)).toEqual(true)
+    }
+    test5()
+    expect(isElement('null')).toEqual(false)
+    expect(isElement('undefined')).toEqual(false)
+    expect(isElement(undefined)).toEqual(false)
+    expect(isElement()).toEqual(false)
+    expect(isElement('2.111')).toEqual(false)
+    expect(isElement([1,2,3])).toEqual(false)
+    expect(isElement(4.1231313)).toEqual(false)
+    expect(isElement(-2.2)).toEqual(false)
+  })
+  test ('isDocument()', () => {
+    expect(isDocument(0)).toEqual(false)
+    expect(isDocument(-2)).toEqual(false)
+    expect(isDocument(false)).toEqual(false)
+    expect(isDocument(true)).toEqual(false)
+    expect(isDocument({})).toEqual(false)
+    expect(isDocument(/\d/)).toEqual(false)
+    expect(isDocument([])).toEqual(false)
+    expect(isDocument(null)).toEqual(false)
+    const testSymbol = function () {
+      const item = Symbol('123')
+      expect (isDocument(item)).toEqual(false)
+    }
+    testSymbol()
+    const testDate = function () {
+      const item = new Date()
+      expect (isDocument(item)).toEqual(false)
+    }
+    testDate()
+    const test2 = function () {
+      const item = new Date('abc')
+      expect (isDocument(item)).toEqual(false)
+    }
+    test2()
+    const test3 = function () {
+      const item = new Error()
+      expect (isDocument(item)).toEqual(false)
+    }
+    test3()
+    const test4 = function () {
+      const item = document
+      expect (isDocument(item)).toEqual(true)
+    }
+    test4()
+    const test5 = function () {
+      const item = document.createElement('div')
+      expect (isDocument(item)).toEqual(false)
+    }
+    test5()
+    expect(isDocument('null')).toEqual(false)
+    expect(isDocument('undefined')).toEqual(false)
+    expect(isDocument(undefined)).toEqual(false)
+    expect(isDocument()).toEqual(false)
+    expect(isDocument('2.111')).toEqual(false)
+    expect(isDocument([1,2,3])).toEqual(false)
+    expect(isDocument(4.1231313)).toEqual(false)
+    expect(isDocument(-2.2)).toEqual(false)
+  })
+  test ('isWindow()', () => {
+    expect(isWindow(0)).toEqual(false)
+    expect(isWindow(-2)).toEqual(false)
+    expect(isWindow(false)).toEqual(false)
+    expect(isWindow(true)).toEqual(false)
+    expect(isWindow({})).toEqual(false)
+    expect(isWindow(/\d/)).toEqual(false)
+    expect(isWindow([])).toEqual(false)
+    expect(isWindow(null)).toEqual(false)
+    const testSymbol = function () {
+      const item = Symbol('123')
+      expect (isWindow(item)).toEqual(false)
+    }
+    testSymbol()
+    const testDate = function () {
+      const item = new Date()
+      expect (isWindow(item)).toEqual(false)
+    }
+    testDate()
+    const test2 = function () {
+      const item = new Date('abc')
+      expect (isWindow(item)).toEqual(false)
+    }
+    test2()
+    const test3 = function () {
+      const item = new Error()
+      expect (isWindow(item)).toEqual(false)
+    }
+    test3()
+    const test4 = function () {
+      const item = document
+      expect (isWindow(item)).toEqual(false)
+    }
+    test4()
+    const test5 = function () {
+      const item = document.createElement('div')
+      expect (isWindow(item)).toEqual(false)
+    }
+    test5()
+    expect(isWindow('null')).toEqual(false)
+    expect(isWindow('undefined')).toEqual(false)
+    expect(isWindow(undefined)).toEqual(false)
+    expect(isWindow()).toEqual(false)
+    expect(isWindow('2.111')).toEqual(false)
+    expect(isWindow([1,2,3])).toEqual(false)
+    expect(isWindow(4.1231313)).toEqual(false)
+    expect(isWindow(-2.2)).toEqual(false)
+  })
+  test ('isFormData()', () => {
+    expect(isFormData(0)).toEqual(false)
+    expect(isFormData(-2)).toEqual(false)
+    expect(isFormData(false)).toEqual(false)
+    expect(isFormData(true)).toEqual(false)
+    expect(isFormData({})).toEqual(false)
+    expect(isFormData(/\d/)).toEqual(false)
+    expect(isFormData([])).toEqual(false)
+    expect(isFormData(null)).toEqual(false)
+    const testSymbol = function () {
+      const item = Symbol('123')
+      expect (isFormData(item)).toEqual(false)
+    }
+    testSymbol()
+    const testDate = function () {
+      const item = new Date()
+      expect (isFormData(item)).toEqual(false)
+    }
+    testDate()
+    const test2 = function () {
+      const item = new Date('abc')
+      expect (isFormData(item)).toEqual(false)
+    }
+    test2()
+    const test3 = function () {
+      const item = new FormData()
+      expect (isFormData(item)).toEqual(true)
+    }
+    test3()
+    const test4 = function () {
+      const item = document
+      expect (isFormData(item)).toEqual(false)
+    }
+    test4()
+    const test5 = function () {
+      const item = document.createElement('div')
+      expect (isFormData(item)).toEqual(false)
+    }
+    test5()
+    expect(isFormData('null')).toEqual(false)
+    expect(isFormData('undefined')).toEqual(false)
+    expect(isFormData(undefined)).toEqual(false)
+    expect(isFormData()).toEqual(false)
+    expect(isFormData('2.111')).toEqual(false)
+    expect(isFormData([1,2,3])).toEqual(false)
+    expect(isFormData(4.1231313)).toEqual(false)
+    expect(isFormData(-2.2)).toEqual(false)
+  })
+  test ('isMap()', () => {
+    expect(isMap(0)).toEqual(false)
+    expect(isMap(-2)).toEqual(false)
+    expect(isMap(false)).toEqual(false)
+    expect(isMap(true)).toEqual(false)
+    expect(isMap({})).toEqual(false)
+    expect(isMap(/\d/)).toEqual(false)
+    expect(isMap([])).toEqual(false)
+    expect(isMap(null)).toEqual(false)
+    const testSymbol = function () {
+      const item = Symbol('123')
+      expect (isMap(item)).toEqual(false)
+    }
+    testSymbol()
+    const testDate = function () {
+      const item = new Date()
+      expect (isMap(item)).toEqual(false)
+    }
+    testDate()
+    const test2 = function () {
+      const item = new Date('abc')
+      expect (isMap(item)).toEqual(false)
+    }
+    test2()
+    const test3 = function () {
+      const item = new FormData()
+      expect (isMap(item)).toEqual(false)
+    }
+    test3()
+    const test4 = function () {
+      const item = new Map()
+      expect (isMap(item)).toEqual(true)
+    }
+    test4()
+    const test5 = function () {
+      const item = document.createElement('div')
+      expect (isMap(item)).toEqual(false)
+    }
+    test5()
+    expect(isMap('null')).toEqual(false)
+    expect(isMap('undefined')).toEqual(false)
+    expect(isMap(undefined)).toEqual(false)
+    expect(isMap()).toEqual(false)
+    expect(isMap('2.111')).toEqual(false)
+    expect(isMap([1,2,3])).toEqual(false)
+    expect(isMap(4.1231313)).toEqual(false)
+    expect(isMap(-2.2)).toEqual(false)
+  })
+  test ('isWeakMap()', () => {
+    expect(isWeakMap(0)).toEqual(false)
+    expect(isWeakMap(-2)).toEqual(false)
+    expect(isWeakMap(false)).toEqual(false)
+    expect(isWeakMap(true)).toEqual(false)
+    expect(isWeakMap({})).toEqual(false)
+    expect(isWeakMap(/\d/)).toEqual(false)
+    expect(isWeakMap([])).toEqual(false)
+    expect(isWeakMap(null)).toEqual(false)
+    const testSymbol = function () {
+      const item = Symbol('123')
+      expect (isWeakMap(item)).toEqual(false)
+    }
+    testSymbol()
+    const testDate = function () {
+      const item = new Date()
+      expect (isWeakMap(item)).toEqual(false)
+    }
+    testDate()
+    const test2 = function () {
+      const item = new Date('abc')
+      expect (isWeakMap(item)).toEqual(false)
+    }
+    test2()
+    const test3 = function () {
+      const item = new WeakMap()
+      expect (isWeakMap(item)).toEqual(true)
+    }
+    test3()
+    const test4 = function () {
+      const item = new Map()
+      expect (isWeakMap(item)).toEqual(false)
+    }
+    test4()
+    const test5 = function () {
+      const item = document.createElement('div')
+      expect (isWeakMap(item)).toEqual(false)
+    }
+    test5()
+    expect(isWeakMap('null')).toEqual(false)
+    expect(isWeakMap('undefined')).toEqual(false)
+    expect(isWeakMap(undefined)).toEqual(false)
+    expect(isWeakMap()).toEqual(false)
+    expect(isWeakMap('2.111')).toEqual(false)
+    expect(isWeakMap([1,2,3])).toEqual(false)
+    expect(isWeakMap(4.1231313)).toEqual(false)
+    expect(isWeakMap(-2.2)).toEqual(false)
+  })
+  test ('isSet()', () => {
+    expect(isSet(0)).toEqual(false)
+    expect(isSet(-2)).toEqual(false)
+    expect(isSet(false)).toEqual(false)
+    expect(isSet(true)).toEqual(false)
+    expect(isSet({})).toEqual(false)
+    expect(isSet(/\d/)).toEqual(false)
+    expect(isSet([])).toEqual(false)
+    expect(isSet(null)).toEqual(false)
+    const testSymbol = function () {
+      const item = Symbol('123')
+      expect (isSet(item)).toEqual(false)
+    }
+    testSymbol()
+    const testDate = function () {
+      const item = new Set()
+      expect (isSet(item)).toEqual(true)
+    }
+    testDate()
+    const test2 = function () {
+      const item = new Date('abc')
+      expect (isSet(item)).toEqual(false)
+    }
+    test2()
+    const test3 = function () {
+      const item = new WeakMap()
+      expect (isSet(item)).toEqual(false)
+    }
+    test3()
+    const test4 = function () {
+      const item = new Map()
+      expect (isSet(item)).toEqual(false)
+    }
+    test4()
+    const test5 = function () {
+      const item = document.createElement('div')
+      expect (isSet(item)).toEqual(false)
+    }
+    test5()
+    expect(isSet('null')).toEqual(false)
+    expect(isSet('undefined')).toEqual(false)
+    expect(isSet(undefined)).toEqual(false)
+    expect(isSet()).toEqual(false)
+    expect(isSet('2.111')).toEqual(false)
+    expect(isSet([1,2,3])).toEqual(false)
+    expect(isSet(4.1231313)).toEqual(false)
+    expect(isSet(-2.2)).toEqual(false)
+  })
+  test ('isWeakSet()', () => {
+    expect(isWeakSet(0)).toEqual(false)
+    expect(isWeakSet(-2)).toEqual(false)
+    expect(isWeakSet(false)).toEqual(false)
+    expect(isWeakSet(true)).toEqual(false)
+    expect(isWeakSet({})).toEqual(false)
+    expect(isWeakSet(/\d/)).toEqual(false)
+    expect(isWeakSet([])).toEqual(false)
+    expect(isWeakSet(null)).toEqual(false)
+    const testSymbol = function () {
+      const item = Symbol('123')
+      expect (isWeakSet(item)).toEqual(false)
+    }
+    testSymbol()
+    const testDate = function () {
+      const item = new Set()
+      expect (isWeakSet(item)).toEqual(false)
+    }
+    testDate()
+    const test2 = function () {
+      const item = new Date('abc')
+      expect (isWeakSet(item)).toEqual(false)
+    }
+    test2()
+    const test3 = function () {
+      const item = new WeakSet()
+      expect (isWeakSet(item)).toEqual(true)
+    }
+    test3()
+    const test4 = function () {
+      const item = new Map()
+      expect (isWeakSet(item)).toEqual(false)
+    }
+    test4()
+    const test5 = function () {
+      const item = document.createElement('div')
+      expect (isWeakSet(item)).toEqual(false)
+    }
+    test5()
+    expect(isWeakSet('null')).toEqual(false)
+    expect(isWeakSet('undefined')).toEqual(false)
+    expect(isWeakSet(undefined)).toEqual(false)
+    expect(isWeakSet()).toEqual(false)
+    expect(isWeakSet('2.111')).toEqual(false)
+    expect(isWeakSet([1,2,3])).toEqual(false)
+    expect(isWeakSet(4.1231313)).toEqual(false)
+    expect(isWeakSet(-2.2)).toEqual(false)
+  })
+  test ('isLeapYear()', () => {
+    expect(isLeapYear('2022-1-20')).toEqual(false)
+    expect(isLeapYear('2020-3-20')).toEqual(true)
+    expect(isLeapYear(1606752000000)).toEqual(true)
+    expect(isLeapYear('2020/12/01')).toEqual(true)
   })
 })

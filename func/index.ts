@@ -16,4 +16,15 @@ import isValidDate from './Base/isValidDate';
 import isError from './Base/isError';
 import isTypeError from './Base/isTypeError';
 import isEmpty from './Base/isEmpty';
-export { isNaN, isFinite, isUndefined, isArray, isFloat, isInteger, isFunction, isBoolean, isString, isNumber, isRegExp, isObject, isRealObject, isDate, isValidDate, isError, isTypeError, isEmpty}
+import isNull from './Base/isNull';
+import isSymbol from './Base/isSymbol';
+import isElement from './Base/isElement';
+import isDocument from './Base/isDocument';
+import isWindow from './Base/isWindow';
+import isFormData from './Base/isFormData';
+import isMap from './Base/isMap'
+import isWeakMap from './Base/isWeakMap';
+import isSet from './Base/isSet';
+import isWeakSet from './Base/isWeakSet';
+import isLeapYear from './Base/isLeapYear';
+export { isNaN, isFinite, isUndefined, isArray, isFloat, isInteger, isFunction, isBoolean, isString, isNumber, isRegExp, isObject, isRealObject, isDate, isValidDate, isError, isTypeError, isEmpty, isNull, isSymbol, isElement, isDocument, isWindow, isFormData, isMap, isWeakMap, isSet, isWeakSet, isLeapYear}
