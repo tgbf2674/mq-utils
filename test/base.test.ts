@@ -1,4 +1,16 @@
-import {isNaN, isFinite, isUndefined, isArray, isFloat, isInteger, isFunction} from '../func';
+import {
+  isNaN,
+  isFinite,
+  isUndefined,
+  isArray,
+  isFloat,
+  isInteger,
+  isFunction,
+  isBoolean,
+  isString,
+  isNumber,
+  isRegExp, isObject, isRealObject, isDate, isValidDate, isError, isTypeError, isEmpty
+} from '../func';
 describe('Base function', () => {
   test ('isNaN()', () => {
     expect(isNaN()).toEqual(false)
@@ -109,5 +121,319 @@ describe('Base function', () => {
       })).toEqual(true)
     }
     method()
+  })
+  test ('isBoolean()', () => {
+    expect(isBoolean(0)).toEqual(false)
+    expect(isBoolean(-2)).toEqual(false)
+    expect(isBoolean(false)).toEqual(true)
+    expect(isBoolean(true)).toEqual(true)
+    expect(isBoolean({})).toEqual(false)
+    expect(isBoolean(/\d/)).toEqual(false)
+    expect(isBoolean(null)).toEqual(false)
+    expect(isBoolean('null')).toEqual(false)
+    expect(isBoolean('undefined')).toEqual(false)
+    expect(isBoolean(undefined)).toEqual(false)
+    expect(isBoolean()).toEqual(false)
+    expect(isBoolean('2.111')).toEqual(false)
+    expect(isBoolean(2.0)).toEqual(false)
+    expect(isBoolean(4.1231313)).toEqual(false)
+    expect(isBoolean(-2.2)).toEqual(false)
+  })
+  test ('isString()', () => {
+    expect(isString(0)).toEqual(false)
+    expect(isString(-2)).toEqual(false)
+    expect(isString(false)).toEqual(false)
+    expect(isString(true)).toEqual(false)
+    expect(isString({})).toEqual(false)
+    expect(isString(/\d/)).toEqual(false)
+    expect(isString(null)).toEqual(false)
+    expect(isString('null')).toEqual(true)
+    expect(isString('undefined')).toEqual(true)
+    expect(isString(undefined)).toEqual(false)
+    expect(isString()).toEqual(false)
+    expect(isString('2.111')).toEqual(true)
+    expect(isString(2.0)).toEqual(false)
+    expect(isString(4.1231313)).toEqual(false)
+    expect(isString(-2.2)).toEqual(false)
+  })
+  test ('isNumber()', () => {
+    expect(isNumber(0)).toEqual(true)
+    expect(isNumber(-2)).toEqual(true)
+    expect(isNumber(false)).toEqual(false)
+    expect(isNumber(true)).toEqual(false)
+    expect(isNumber({})).toEqual(false)
+    expect(isNumber(/\d/)).toEqual(false)
+    expect(isNumber(null)).toEqual(false)
+    expect(isNumber('null')).toEqual(false)
+    expect(isNumber('undefined')).toEqual(false)
+    expect(isNumber(undefined)).toEqual(false)
+    expect(isNumber()).toEqual(false)
+    expect(isNumber('2.111')).toEqual(false)
+    expect(isNumber(2.0)).toEqual(true)
+    expect(isNumber(4.1231313)).toEqual(true)
+    expect(isNumber(-2.2)).toEqual(true)
+  })
+  test ('isRegExp()', () => {
+    expect(isRegExp(0)).toEqual(false)
+    expect(isRegExp(-2)).toEqual(false)
+    expect(isRegExp(false)).toEqual(false)
+    expect(isRegExp(true)).toEqual(false)
+    expect(isRegExp({})).toEqual(false)
+    expect(isRegExp(/\d/)).toEqual(true)
+    expect(isRegExp(null)).toEqual(false)
+    expect(isRegExp('null')).toEqual(false)
+    expect(isRegExp('undefined')).toEqual(false)
+    expect(isRegExp(undefined)).toEqual(false)
+    expect(isRegExp()).toEqual(false)
+    expect(isRegExp('2.111')).toEqual(false)
+    expect(isRegExp(2.0)).toEqual(false)
+    expect(isRegExp(4.1231313)).toEqual(false)
+    expect(isRegExp(-2.2)).toEqual(false)
+  })
+  test ('isObject()', () => {
+    expect(isObject(0)).toEqual(false)
+    expect(isObject(-2)).toEqual(false)
+    expect(isObject(false)).toEqual(false)
+    expect(isObject(true)).toEqual(false)
+    expect(isObject({})).toEqual(true)
+    expect(isObject(/\d/)).toEqual(true)
+    expect(isObject([])).toEqual(true)
+    expect(isObject(null)).toEqual(true)
+    const testSymbol = function () {
+      const item = Symbol('123')
+      expect (isObject(item)).toEqual(false)
+    }
+    testSymbol()
+    const testDate = function () {
+      const item = new Date()
+      expect (isObject(item)).toEqual(true)
+    }
+    testDate()
+    expect(isObject('null')).toEqual(false)
+    expect(isObject('undefined')).toEqual(false)
+    expect(isObject(undefined)).toEqual(false)
+    expect(isObject()).toEqual(false)
+    expect(isObject('2.111')).toEqual(false)
+    expect(isObject(2.0)).toEqual(false)
+    expect(isObject(4.1231313)).toEqual(false)
+    expect(isObject(-2.2)).toEqual(false)
+  })
+  test ('isRealObject()', () => {
+    expect(isRealObject(0)).toEqual(false)
+    expect(isRealObject(-2)).toEqual(false)
+    expect(isRealObject(false)).toEqual(false)
+    expect(isRealObject(true)).toEqual(false)
+    expect(isRealObject({})).toEqual(true)
+    expect(isRealObject(/\d/)).toEqual(false)
+    expect(isRealObject([])).toEqual(false)
+    expect(isRealObject(null)).toEqual(false)
+    const testSymbol = function () {
+      const item = Symbol('123')
+      expect (isRealObject(item)).toEqual(false)
+    }
+    testSymbol()
+    const testDate = function () {
+      const item = new Date()
+      expect (isRealObject(item)).toEqual(false)
+    }
+    testDate()
+    expect(isRealObject('null')).toEqual(false)
+    expect(isRealObject('undefined')).toEqual(false)
+    expect(isRealObject(undefined)).toEqual(false)
+    expect(isRealObject()).toEqual(false)
+    expect(isRealObject('2.111')).toEqual(false)
+    expect(isRealObject(2.0)).toEqual(false)
+    expect(isRealObject(4.1231313)).toEqual(false)
+    expect(isRealObject(-2.2)).toEqual(false)
+  })
+  test ('isDate()', () => {
+    expect(isDate(0)).toEqual(false)
+    expect(isDate(-2)).toEqual(false)
+    expect(isDate(false)).toEqual(false)
+    expect(isDate(true)).toEqual(false)
+    expect(isDate({})).toEqual(false)
+    expect(isDate(/\d/)).toEqual(false)
+    expect(isDate([])).toEqual(false)
+    expect(isDate(null)).toEqual(false)
+    const testSymbol = function () {
+      const item = Symbol('123')
+      expect (isDate(item)).toEqual(false)
+    }
+    testSymbol()
+    const testDate = function () {
+      const item = new Date()
+      expect (isDate(item)).toEqual(true)
+    }
+    testDate()
+    const testDate2 = function () {
+      const item = new Date('abc')
+      expect (isDate(item)).toEqual(true)
+    }
+    testDate2()
+    expect(isDate('null')).toEqual(false)
+    expect(isDate('undefined')).toEqual(false)
+    expect(isDate(undefined)).toEqual(false)
+    expect(isDate()).toEqual(false)
+    expect(isDate('2.111')).toEqual(false)
+    expect(isDate(2.0)).toEqual(false)
+    expect(isDate(4.1231313)).toEqual(false)
+    expect(isDate(-2.2)).toEqual(false)
+  })
+  test ('isValidDate()', () => {
+    expect(isValidDate(0)).toEqual(false)
+    expect(isValidDate(-2)).toEqual(false)
+    expect(isValidDate(false)).toEqual(false)
+    expect(isValidDate(true)).toEqual(false)
+    expect(isValidDate({})).toEqual(false)
+    expect(isValidDate(/\d/)).toEqual(false)
+    expect(isValidDate([])).toEqual(false)
+    expect(isValidDate(null)).toEqual(false)
+    const testSymbol = function () {
+      const item = Symbol('123')
+      expect (isValidDate(item)).toEqual(false)
+    }
+    testSymbol()
+    const testDate = function () {
+      const item = new Date()
+      expect (isValidDate(item)).toEqual(true)
+    }
+    testDate()
+    const testDate2 = function () {
+      const item = new Date('abc')
+      expect (isValidDate(item)).toEqual(false)
+    }
+    testDate2()
+    expect(isValidDate('null')).toEqual(false)
+    expect(isValidDate('undefined')).toEqual(false)
+    expect(isValidDate(undefined)).toEqual(false)
+    expect(isValidDate()).toEqual(false)
+    expect(isValidDate('2.111')).toEqual(false)
+    expect(isValidDate(2.0)).toEqual(false)
+    expect(isValidDate(4.1231313)).toEqual(false)
+    expect(isValidDate(-2.2)).toEqual(false)
+  })
+  test ('isError()', () => {
+    expect(isError(0)).toEqual(false)
+    expect(isError(-2)).toEqual(false)
+    expect(isError(false)).toEqual(false)
+    expect(isError(true)).toEqual(false)
+    expect(isError({})).toEqual(false)
+    expect(isError(/\d/)).toEqual(false)
+    expect(isError([])).toEqual(false)
+    expect(isError(null)).toEqual(false)
+    const testSymbol = function () {
+      const item = Symbol('123')
+      expect (isError(item)).toEqual(false)
+    }
+    testSymbol()
+    const testDate = function () {
+      const item = new Date()
+      expect (isError(item)).toEqual(false)
+    }
+    testDate()
+    const testDate2 = function () {
+      const item = new Date('abc')
+      expect (isError(item)).toEqual(false)
+    }
+    testDate2()
+    const testDate3 = function () {
+      const item = new Error()
+      expect (isError(item)).toEqual(true)
+    }
+    testDate3()
+    expect(isError('null')).toEqual(false)
+    expect(isError('undefined')).toEqual(false)
+    expect(isError(undefined)).toEqual(false)
+    expect(isError()).toEqual(false)
+    expect(isError('2.111')).toEqual(false)
+    expect(isError(2.0)).toEqual(false)
+    expect(isError(4.1231313)).toEqual(false)
+    expect(isError(-2.2)).toEqual(false)
+  })
+  test ('isTypeError()', () => {
+    expect(isTypeError(0)).toEqual(false)
+    expect(isTypeError(-2)).toEqual(false)
+    expect(isTypeError(false)).toEqual(false)
+    expect(isTypeError(true)).toEqual(false)
+    expect(isTypeError({})).toEqual(false)
+    expect(isTypeError(/\d/)).toEqual(false)
+    expect(isTypeError([])).toEqual(false)
+    expect(isTypeError(null)).toEqual(false)
+    const testSymbol = function () {
+      const item = Symbol('123')
+      expect (isTypeError(item)).toEqual(false)
+    }
+    testSymbol()
+    const testDate = function () {
+      const item = new Date()
+      expect (isTypeError(item)).toEqual(false)
+    }
+    testDate()
+    const testDate2 = function () {
+      const item = new Date('abc')
+      expect (isTypeError(item)).toEqual(false)
+    }
+    testDate2()
+    const testDate3 = function () {
+      const item = new Error()
+      expect (isTypeError(item)).toEqual(false)
+    }
+    testDate3()
+    const testDate4 = function () {
+      const item = new TypeError()
+      expect (isTypeError(item)).toEqual(true)
+    }
+    testDate4()
+    expect(isTypeError('null')).toEqual(false)
+    expect(isTypeError('undefined')).toEqual(false)
+    expect(isTypeError(undefined)).toEqual(false)
+    expect(isTypeError()).toEqual(false)
+    expect(isTypeError('2.111')).toEqual(false)
+    expect(isTypeError(2.0)).toEqual(false)
+    expect(isTypeError(4.1231313)).toEqual(false)
+    expect(isTypeError(-2.2)).toEqual(false)
+  })
+  test ('isEmpty()', () => {
+    expect(isEmpty(0)).toEqual(false)
+    expect(isEmpty(-2)).toEqual(false)
+    expect(isEmpty(false)).toEqual(false)
+    expect(isEmpty(true)).toEqual(false)
+    expect(isEmpty({})).toEqual(true)
+    expect(isEmpty(/\d/)).toEqual(true)
+    expect(isEmpty([])).toEqual(true)
+    expect(isEmpty(null)).toEqual(true)
+    const testSymbol = function () {
+      const item = Symbol('123')
+      expect (isEmpty(item)).toEqual(false)
+    }
+    testSymbol()
+    const testDate = function () {
+      const item = new Date()
+      expect (isEmpty(item)).toEqual(true)
+    }
+    testDate()
+    const testDate2 = function () {
+      const item = new Date('abc')
+      expect (isEmpty(item)).toEqual(true)
+    }
+    testDate2()
+    const testDate3 = function () {
+      const item = new Error()
+      expect (isEmpty(item)).toEqual(true)
+    }
+    testDate3()
+    const testDate4 = function () {
+      const item = new TypeError()
+      expect (isEmpty(item)).toEqual(true)
+    }
+    testDate4()
+    expect(isEmpty('null')).toEqual(false)
+    expect(isEmpty('undefined')).toEqual(false)
+    expect(isEmpty(undefined)).toEqual(false)
+    expect(isEmpty()).toEqual(false)
+    expect(isEmpty('2.111')).toEqual(false)
+    expect(isEmpty([1,2,3])).toEqual(false)
+    expect(isEmpty(4.1231313)).toEqual(false)
+    expect(isEmpty(-2.2)).toEqual(false)
   })
 })

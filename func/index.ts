@@ -5,4 +5,15 @@ import isArray from './Base/isArray';
 import isFloat from './Base/isFloat';
 import isInteger from './Base/isInteget';
 import isFunction from './Base/isFunction';
-export { isNaN, isFinite, isUndefined, isArray, isFloat, isInteger, isFunction}
+import isBoolean from './Base/isBoolean';
+import isString from './Base/isString';
+import isNumber from './Base/isNumber';
+import isRegExp from './Base/isRegExp';
+import isObject from './Base/isObject';
+import isRealObject from './Base/isRealObject';
+import isDate from './Base/isDate';
+import isValidDate from './Base/isValidDate';
+import isError from './Base/isError';
+import isTypeError from './Base/isTypeError';
+import isEmpty from './Base/isEmpty';
+export { isNaN, isFinite, isUndefined, isArray, isFloat, isInteger, isFunction, isBoolean, isString, isNumber, isRegExp, isObject, isRealObject, isDate, isValidDate, isError, isTypeError, isEmpty}
