@@ -20,8 +20,9 @@ import {
   isNull,
   isSymbol,
   isElement,
-  isDocument, isWindow, isFormData, isMap, isWeakMap, isSet, isWeakSet, isLeapYear
+  isDocument, isWindow, isFormData, isMap, isWeakMap, isSet, isWeakSet, isLeapYear, getType, getSize, JSONtoString
 } from '../func';
+import stringToJSON from '../func/Base/stringToJSON';
 describe('Base function', () => {
   test ('isNaN()', () => {
     expect(isNaN()).toEqual(false)
@@ -922,5 +923,47 @@ describe('Base function', () => {
     expect(isLeapYear('2020-3-20')).toEqual(true)
     expect(isLeapYear(1606752000000)).toEqual(true)
     expect(isLeapYear('2020/12/01')).toEqual(true)
+  })
+  test('getType()', () => {
+    expect(getType()).toEqual('Undefined')
+    expect(getType(null)).toEqual('Null')
+    expect(getType('')).toEqual('String')
+    expect(getType(/\d/)).toEqual('RegExp')
+    expect(getType(1)).toEqual('Number')
+    expect(getType([])).toEqual('Array')
+    expect(getType({})).toEqual('Object')
+    expect(getType(new Error)).toEqual('Error')
+    expect(getType(function () {
+      console.log(1)
+    })).toEqual('Function')
+  })
+  test ('getSize()', () => {
+    expect(getSize()).toEqual(0)
+    expect(getSize({})).toEqual(0)
+    expect(getSize([])).toEqual(0)
+    expect(getSize(null)).toEqual(0)
+    expect(getSize(undefined)).toEqual(0)
+    expect(getSize(false)).toEqual(0)
+    expect(getSize(-1)).toEqual(0)
+    expect(getSize(10)).toEqual(0)
+    expect(getSize('123')).toEqual(3)
+    expect(getSize([1,3])).toEqual(2)
+    expect(getSize({a: 1, b: 4})).toEqual(2)
+  })
+  test ('stringToJSON()', () => {
+    expect(stringToJSON('123')).toEqual(123)
+    expect(stringToJSON()).toEqual({})
+    expect(stringToJSON('')).toEqual({})
+    expect(stringToJSON('[1,3]')).toEqual([1,3])
+    expect(stringToJSON('{"a": 1, "b": 4}')).toEqual({a: 1, b: 4})
+  })
+  test ('JSONToString()', () => {
+    expect(JSONtoString(123)).toEqual('123')
+    expect(JSONtoString(null)).toEqual('')
+    expect(JSONtoString(undefined)).toEqual('')
+    expect(JSONtoString()).toEqual('')
+    expect(JSONtoString(-1)).toEqual('-1')
+    expect(JSONtoString([])).toEqual('[]')
+    expect(JSONtoString({})).toEqual('{}')
   })
 })

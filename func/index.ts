@@ -27,4 +27,8 @@ import isWeakMap from './Base/isWeakMap';
 import isSet from './Base/isSet';
 import isWeakSet from './Base/isWeakSet';
 import isLeapYear from './Base/isLeapYear';
-export { isNaN, isFinite, isUndefined, isArray, isFloat, isInteger, isFunction, isBoolean, isString, isNumber, isRegExp, isObject, isRealObject, isDate, isValidDate, isError, isTypeError, isEmpty, isNull, isSymbol, isElement, isDocument, isWindow, isFormData, isMap, isWeakMap, isSet, isWeakSet, isLeapYear}
+import getType from './Base/getType';
+import getSize from './Base/getSize';
+import stringToJSON from './Base/stringToJSON';
+import JSONtoString from './Base/JSONtoString';
+export { isNaN, isFinite, isUndefined, isArray, isFloat, isInteger, isFunction, isBoolean, isString, isNumber, isRegExp, isObject, isRealObject, isDate, isValidDate, isError, isTypeError, isEmpty, isNull, isSymbol, isElement, isDocument, isWindow, isFormData, isMap, isWeakMap, isSet, isWeakSet, isLeapYear, getType, getSize, stringToJSON, JSONtoString}
