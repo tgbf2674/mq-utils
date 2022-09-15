@@ -31,10 +31,10 @@ import {
   getType,
   getSize,
   JSONtoString,
+  stringToJSON,
   keys,
   values, entries, first, last
 } from '../func';
-import stringToJSON from '../func/Base/stringToJSON';
 describe('Base function', () => {
   test ('isNaN()', () => {
     expect(isNaN()).toEqual(false)
