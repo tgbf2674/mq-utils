@@ -20,7 +20,19 @@ import {
   isNull,
   isSymbol,
   isElement,
-  isDocument, isWindow, isFormData, isMap, isWeakMap, isSet, isWeakSet, isLeapYear, getType, getSize, JSONtoString
+  isDocument,
+  isWindow,
+  isFormData,
+  isMap,
+  isWeakMap,
+  isSet,
+  isWeakSet,
+  isLeapYear,
+  getType,
+  getSize,
+  JSONtoString,
+  keys,
+  values, entries, first, last
 } from '../func';
 import stringToJSON from '../func/Base/stringToJSON';
 describe('Base function', () => {
@@ -965,5 +977,47 @@ describe('Base function', () => {
     expect(JSONtoString(-1)).toEqual('-1')
     expect(JSONtoString([])).toEqual('[]')
     expect(JSONtoString({})).toEqual('{}')
+  })
+  test ('keys()', () => {
+    expect(keys(123)).toEqual([])
+    expect(keys('123')).toEqual(['0','1','2'])
+    expect(keys(null)).toEqual([])
+    expect(keys(undefined)).toEqual([])
+    expect(keys()).toEqual([])
+    expect(keys([3,4,5])).toEqual(['0','1','2'])
+    expect(keys({a:1,b:2,c:3})).toEqual(['a','b','c'])
+  })
+  test ('values()', () => {
+    expect(values(123)).toEqual([])
+    expect(values('123')).toEqual(['1','2','3'])
+    expect(values(null)).toEqual([])
+    expect(values(undefined)).toEqual([])
+    expect(values()).toEqual([])
+    expect(values([3,4,5])).toEqual([3,4,5])
+    expect(values({a:1,b:2,c:3})).toEqual([1,2,3])
+  })
+  test ('entries()', () => {
+    expect(entries(123)).toEqual({})
+    expect(entries(null)).toEqual({})
+    expect(entries(undefined)).toEqual({})
+    expect(entries()).toEqual({})
+    expect(entries([3,4,5])).toEqual([[0,3],[1,4],[2,5]])
+    expect(entries({a:1,b:2,c:3})).toEqual([['a',1], ['b',2], ['c',3]])
+  })
+  test ('first()', () => {
+    expect(first(123)).toEqual(123)
+    expect(first(null)).toEqual(null)
+    expect(first(undefined)).toEqual(undefined)
+    expect(first()).toEqual(undefined)
+    expect(first([3,4,5])).toEqual(3)
+    expect(first({a:1,b:2,c:3})).toEqual(1)
+  })
+  test ('last()', () => {
+    expect(last(123)).toEqual(123)
+    expect(last(null)).toEqual(null)
+    expect(last(undefined)).toEqual(undefined)
+    expect(last()).toEqual(undefined)
+    expect(last([3,4,5])).toEqual(5)
+    expect(last({a:1,b:2,c:3})).toEqual(3)
   })
 })
