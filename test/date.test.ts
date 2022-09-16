@@ -1,10 +1,10 @@
-import now from '../func/Date/Date';
-import {toStringDate} from '../func';
+import now from '../func/Date/now';
+import {timestamp, toStringDate} from '../func';
 describe('date function', () => {
-  const date = new Date()
+  const date = new Date(2017, 0, 1, 14, 5, 30, 99)
   const time = date.getTime()
   test('now()', () => {
-    expect(now() >= date).toEqual(true)
+    expect(now() >= time).toEqual(true)
   })
   test('toStringDate()', () => {
     expect(toStringDate() instanceof Date).toEqual(true)
@@ -169,5 +169,31 @@ describe('date function', () => {
     expect(
       toStringDate('oo MM:01 dd:20 yyyy:2017 oo', 'oo [MM]:M [dd]:d [yyyy]:yyyy oo')
     ).toEqual(new Date(2017, 0, 20))
+  })
+  test('timestamp()', () => {
+    expect(
+      timestamp(-1).toString()
+    ).toEqual('-1')
+    expect(
+      timestamp(123456).toString()
+    ).toEqual('123456')
+    expect(
+      timestamp('abc').toString()
+    ).toEqual('NaN')
+    expect(
+      timestamp() >= time
+    ).toEqual(true)
+    expect(
+      timestamp(time)
+    ).toEqual(new Date(2017, 0, 1, 14, 5, 30, 99).getTime())
+    expect(
+      timestamp(date)
+    ).toEqual(time)
+    expect(
+      timestamp('2018-12-01')
+    ).toEqual(new Date(2018, 11, 1).getTime())
+    expect(
+      timestamp('2017/12/20 10:10:30.459', 'yyyy/MM/dd HH:mm:ss.SSS')
+    ).toEqual(new Date(2017, 11, 20, 10, 10, 30, 459).getTime())
   })
 })

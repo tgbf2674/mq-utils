@@ -118,6 +118,10 @@ function parseCustomRules (str:string, format: string) {
   return resMaps
 }
 
+/**
+ * 获取地区时间
+ * @param resMaps
+ */
 function helperGetUTCDateTime (resMaps: any) {
   return Date.UTC(resMaps.y, resMaps.M || 0, resMaps.d || 1, resMaps.H || 0, resMaps.m || 0, resMaps.s || 0, resMaps.S || 0)
 }
@@ -141,12 +145,14 @@ function parseTimeZone (resMaps: any) {
 
 function toStringDate(str?: string | Date | number, format?:string): Date {
   if (str) {
-    if (str instanceof Date) {
-      return new Date(str.getTime())
-    } else if (typeof str === 'string' && !format && /^[0-9]{11,15}$/.test(str)) {
-      return new Date (parseInt(str))
-    } else if (typeof str === 'number') return new Date(str)
-    if (isString(str)) {
+      if (str instanceof Date) {
+        return new Date(str.getTime())
+      } else if (typeof str === 'string' && !format && /^[0-9]{11,15}$/.test(str)) {
+        return new Date(parseInt(str))
+      } else if (typeof str === 'number') {
+        return new Date(str)
+      }
+      else if (typeof str === 'string') {
       const resMaps = format ? parseCustomRules(str as string, format!) : parseDefaultRules(str as string)
       if (resMaps.y) {
         if (resMaps.M) {
