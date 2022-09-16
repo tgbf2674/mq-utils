@@ -145,9 +145,9 @@ function toStringDate(str?: string | Date | number, format?:string): Date {
       return new Date(str.getTime())
     } else if (typeof str === 'string' && !format && /^[0-9]{11,15}$/.test(str)) {
       return new Date (parseInt(str))
-    }
+    } else if (typeof str === 'number') return new Date(str)
     if (isString(str)) {
-      const resMaps = format ? parseCustomRules(str as string, format) : parseDefaultRules(str as string)
+      const resMaps = format ? parseCustomRules(str as string, format!) : parseDefaultRules(str as string)
       if (resMaps.y) {
         if (resMaps.M) {
           resMaps.M = toParseNum(resMaps.M) - 1
