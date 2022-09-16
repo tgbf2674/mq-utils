@@ -1,5 +1,3 @@
-import {isDate, isString} from '../index';
-
 function getParseRule (txt: string | number) {
   return '(\\d{' + txt + '})'
 }

@@ -1,9 +1,9 @@
 import now from './now';
-import { toStringDate} from '../index';
+import mmqUtils from '../index';
 
 function timestamp (str?: string | number | Date, format?: string): number {
   if (str) {
-    const date = toStringDate(str, format)
+    const date = mmqUtils.toStringDate(str, format)
     return date.getTime()
   }
   return now()

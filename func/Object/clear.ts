@@ -1,18 +1,18 @@
-import {isArray, isNull, isObject, isRealObject} from '../index';
+import mmqUtils from '../index';
 
 function clear (obj: any, defs?:any, assigns?: any): object {
   if (obj) {
     let len = 0
-    const isDefs: boolean = arguments.length > 0 && (isNull(defs) || !isObject(defs))
+    const isDefs: boolean = arguments.length > 0 && (mmqUtils.isNull(defs) || !mmqUtils.isObject(defs))
     const extds = isDefs ? assigns : defs
-    if (isRealObject(obj)) {
+    if (mmqUtils.isRealObject(obj)) {
       for (const key in obj) {
         isDefs ? obj[key] = defs : delete obj[key]
       }
       if (extds) {
         assigns(obj, extds)
       }
-    } else if (isArray(obj)) {
+    } else if (mmqUtils.isArray(obj)) {
       if (isDefs) {
         len = obj.length
         while (len> 0) {
