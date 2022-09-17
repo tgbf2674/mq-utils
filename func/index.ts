@@ -48,6 +48,8 @@ import now from './Date/now';
 import toStringDate from './Date/toStringDate';
 import timestamp from './Date/timestamp';
 
-const mmqUtils = { isNaN: isNaN, isFinite, isUndefined, isArray, isFloat, isInteger, isFunction, isBoolean, isString, isNumber, isRegExp, isObject, isRealObject, isDate, isValidDate, isError, isTypeError, isEmpty, isNull, isSymbol, isElement, isDocument, isWindow, isFormData, isMap, isWeakMap, isSet, isWeakSet, isLeapYear, getType, getSize, stringToJSON, JSONtoString, keys, values,entries, first, last, noop, throttle, debounce, arrayEach, now, toStringDate, timestamp, clear }
+import random from './Number/random';
+
+const mmqUtils = { isNaN: isNaN, isFinite, isUndefined, isArray, isFloat, isInteger, isFunction, isBoolean, isString, isNumber, isRegExp, isObject, isRealObject, isDate, isValidDate, isError, isTypeError, isEmpty, isNull, isSymbol, isElement, isDocument, isWindow, isFormData, isMap, isWeakMap, isSet, isWeakSet, isLeapYear, getType, getSize, stringToJSON, JSONtoString, keys, values,entries, first, last, noop, throttle, debounce, arrayEach, now, toStringDate, timestamp, clear, random }
 
 export default mmqUtils
