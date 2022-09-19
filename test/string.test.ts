@@ -152,4 +152,74 @@ describe('string function', () => {
       mmqUtils.trim(' abc ')
     ).toEqual('abc')
   })
+  test('trimLeft()', () => {
+    expect(
+      mmqUtils.trimLeft()
+    ).toEqual('')
+    expect(
+      mmqUtils.trimLeft(null)
+    ).toEqual('')
+    expect(
+      mmqUtils.trimLeft(undefined)
+    ).toEqual('')
+    expect(
+      mmqUtils.trimLeft('')
+    ).toEqual('')
+    expect(
+      mmqUtils.trimLeft('   ')
+    ).toEqual('')
+    expect(
+      mmqUtils.trimLeft(0)
+    ).toEqual('0')
+    expect(
+      mmqUtils.trimLeft(123456)
+    ).toEqual('123456')
+    expect(
+      mmqUtils.trimLeft(-1)
+    ).toEqual('-1')
+    expect(
+      mmqUtils.trimLeft([])
+    ).toEqual('')
+    expect(
+      mmqUtils.trimLeft('0')
+    ).toEqual('0')
+    expect(
+      mmqUtils.trimLeft(' abc ')
+    ).toEqual('abc ')
+  })
+  test('trimRight()', () => {
+    expect(
+      mmqUtils.trimRight()
+    ).toEqual('')
+    expect(
+      mmqUtils.trimRight(null)
+    ).toEqual('')
+    expect(
+      mmqUtils.trimRight(undefined)
+    ).toEqual('')
+    expect(
+      mmqUtils.trimRight('')
+    ).toEqual('')
+    expect(
+      mmqUtils.trimRight('   ')
+    ).toEqual('')
+    expect(
+      mmqUtils.trimRight(0)
+    ).toEqual('0')
+    expect(
+      mmqUtils.trimRight(123456)
+    ).toEqual('123456')
+    expect(
+      mmqUtils.trimRight(-1)
+    ).toEqual('-1')
+    expect(
+      mmqUtils.trimRight([])
+    ).toEqual('')
+    expect(
+      mmqUtils.trimRight('0')
+    ).toEqual('0')
+    expect(
+      mmqUtils.trimRight(' abc ')
+    ).toEqual(' abc')
+  })
 });
