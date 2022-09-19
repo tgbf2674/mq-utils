@@ -117,4 +117,39 @@ describe('string function', () => {
       mmqUtils.toValueString([123.0000006])
     ).toEqual('123.0000006');
   });
+  test('trim()', () => {
+    expect(
+      mmqUtils.trim()
+    ).toEqual('')
+    expect(
+      mmqUtils.trim(null)
+    ).toEqual('')
+    expect(
+      mmqUtils.trim(undefined)
+    ).toEqual('')
+    expect(
+      mmqUtils.trim('')
+    ).toEqual('')
+    expect(
+      mmqUtils.trim('  ')
+    ).toEqual('')
+    expect(
+      mmqUtils.trim(0)
+    ).toEqual('0')
+    expect(
+      mmqUtils.trim(123456)
+    ).toEqual('123456')
+    expect(
+      mmqUtils.trim(-1)
+    ).toEqual('-1')
+    expect(
+      mmqUtils.trim([])
+    ).toEqual('')
+    expect(
+      mmqUtils.trim('0')
+    ).toEqual('0')
+    expect(
+      mmqUtils.trim(' abc ')
+    ).toEqual('abc')
+  })
 });
