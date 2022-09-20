@@ -222,4 +222,82 @@ describe('string function', () => {
       mmqUtils.trimRight(' abc ')
     ).toEqual(' abc')
   })
+  test('repeat()', () => {
+    expect(
+      mmqUtils.repeat('aaaaa')
+    ).toEqual('')
+    expect(
+      mmqUtils.repeat('aaaaa', 0)
+    ).toEqual('')
+    expect(
+      mmqUtils.repeat('aaaaa', null)
+    ).toEqual('')
+    expect(
+      mmqUtils.repeat('aaaaa', undefined)
+    ).toEqual('')
+    expect(
+      mmqUtils.repeat('a', 5)
+    ).toEqual('aaaaa')
+    expect(
+      mmqUtils.repeat('ab', 3)
+    ).toEqual('ababab')
+  })
+  test('padStart()', () => {
+    expect(
+      mmqUtils.padStart(0, 2)
+    ).toEqual(' 0')
+    expect(
+      mmqUtils.padStart('', 2)
+    ).toEqual('  ')
+    expect(
+      mmqUtils.padStart('a', 4)
+    ).toEqual('   a')
+    expect(
+      mmqUtils.padStart('a', 6, undefined)
+    ).toEqual('     a')
+    expect(
+      mmqUtils.padStart('a', 6, null)
+    ).toEqual('     a')
+    expect(
+      mmqUtils.padStart('a', 6, false)
+    ).toEqual('falsea')
+    expect(
+      mmqUtils.padStart('a', 5, 'b')
+    ).toEqual('bbbba')
+    expect(
+      mmqUtils.padStart('2', 5, 0)
+    ).toEqual('00002')
+    expect(
+      mmqUtils.padStart('2', 5, '0')
+    ).toEqual('00002')
+  })
+  test('padEnd()', () => {
+    expect(
+      mmqUtils.padEnd(0, 2)
+    ).toEqual('0 ')
+    expect(
+      mmqUtils.padEnd('', 2)
+    ).toEqual('  ')
+    expect(
+      mmqUtils.padEnd('a', 4)
+    ).toEqual('a   ')
+    expect(
+      mmqUtils.padEnd('a', 6, undefined)
+    ).toEqual('a     ')
+    expect(
+      mmqUtils.padEnd('a', 6, null)
+    ).toEqual('a     ')
+    expect(
+      mmqUtils.padEnd('a', 6, false)
+    ).toEqual('afalse')
+    expect(
+      mmqUtils.padEnd('a', 5, 'b')
+    ).toEqual('abbbb')
+    expect(
+      mmqUtils.padEnd('2', 5, 0)
+    ).toEqual('20000')
+    expect(
+      mmqUtils.padEnd('2', 5, '0')
+    ).toEqual('20000')
+  })
 });
