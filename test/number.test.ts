@@ -229,4 +229,68 @@ describe('Number functions', () => {
       Number(mmqUtils.toNumberString(25.36e-16))
     ).toEqual(25.36e-16)
   })
+  test('toNumber()', () => {
+    expect(
+      mmqUtils.toNumber([])
+    ).toEqual(0)
+    expect(
+      mmqUtils.toNumber({})
+    ).toEqual(0)
+    expect(
+      mmqUtils.toNumber(true)
+    ).toEqual(0)
+    expect(
+      mmqUtils.toNumber('abc')
+    ).toEqual(0)
+    expect(
+      mmqUtils.toNumber('$123')
+    ).toEqual(0)
+    expect(
+      mmqUtils.toNumber('123元')
+    ).toEqual(123)
+    expect(
+      mmqUtils.toNumber(123)
+    ).toEqual(123)
+    expect(
+      mmqUtils.toNumber('12.3')
+    ).toEqual(12.3)
+    expect(
+      mmqUtils.toNumber('12456456.66663')
+    ).toEqual(12456456.66663)
+  })
+  test('toInteger()', () => {
+    expect(
+      mmqUtils.toInteger(0)
+    ).toEqual(0)
+    expect(
+      mmqUtils.toInteger(-1)
+    ).toEqual(-1)
+    expect(
+      mmqUtils.toInteger([])
+    ).toEqual(0)
+    expect(
+      mmqUtils.toInteger({})
+    ).toEqual(0)
+    expect(
+      mmqUtils.toInteger(/\d/)
+    ).toEqual(0)
+    expect(
+      mmqUtils.toInteger(true)
+    ).toEqual(0)
+    expect(
+      mmqUtils.toInteger('abc')
+    ).toEqual(NaN)
+    expect(
+      mmqUtils.toInteger(123)
+    ).toEqual(123)
+    expect(
+      mmqUtils.toInteger(5675.9004)
+    ).toEqual(5675)
+    expect(
+      mmqUtils.toInteger('12.3')
+    ).toEqual(12)
+    expect(
+      mmqUtils.toInteger('16572.3657567')
+    ).toEqual(16572)
+  })
 })
