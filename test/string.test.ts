@@ -300,4 +300,56 @@ describe('string function', () => {
       mmqUtils.padEnd('2', 5, '0')
     ).toEqual('20000')
   })
+  test('startsWith()', () => {
+    expect(
+      mmqUtils.startsWith('')
+    ).toEqual(false)
+    expect(
+      mmqUtils.startsWith('abc')
+    ).toEqual(false)
+    expect(
+      mmqUtils.startsWith('abc', null)
+    ).toEqual(false)
+    expect(
+      mmqUtils.startsWith('abc', -1)
+    ).toEqual(false)
+    expect(
+      mmqUtils.startsWith('abc', 'b')
+    ).toEqual(false)
+    expect(
+      mmqUtils.startsWith('abc', 'b', 2)
+    ).toEqual(false)
+    expect(
+      mmqUtils.startsWith('abc', 'a')
+    ).toEqual(true)
+    expect(
+      mmqUtils.startsWith('abc', 'b', 1)
+    ).toEqual(true)
+  })
+  test('endsWith()', () => {
+    expect(
+      mmqUtils.endsWith('')
+    ).toEqual(false)
+    expect(
+      mmqUtils.endsWith('abc')
+    ).toEqual(false)
+    expect(
+      mmqUtils.endsWith('abc', null)
+    ).toEqual(false)
+    expect(
+      mmqUtils.endsWith('abc', -1)
+    ).toEqual(false)
+    expect(
+      mmqUtils.endsWith('abc', 'a')
+    ).toEqual(false)
+    expect(
+      mmqUtils.endsWith('abc', 'c', 2)
+    ).toEqual(false)
+    expect(
+      mmqUtils.endsWith('abc', 'c')
+    ).toEqual(true)
+    expect(
+      mmqUtils.endsWith('abc', 'b', 2)
+    ).toEqual(true)
+  })
 });
