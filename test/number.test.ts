@@ -293,4 +293,83 @@ describe('Number functions', () => {
       mmqUtils.toInteger('16572.3657567')
     ).toEqual(16572)
   })
+  test('add()', () => {
+    expect(
+      mmqUtils.add('abc', '123')
+    ).toEqual(123)
+    expect(
+      mmqUtils.add('22', 33)
+    ).toEqual(55)
+    expect(
+      mmqUtils.add(0, 33)
+    ).toEqual(33)
+    expect(
+      mmqUtils.add(2000, 500000)
+    ).toEqual(502000)
+    expect(
+      mmqUtils.add(3.84, 4.78)
+    ).toEqual(8.62)
+    expect(
+      mmqUtils.add(-3.33, 7.066)
+    ).toEqual(3.736)
+    expect(
+      mmqUtils.add(0.4598, 5.024666)
+    ).toEqual(5.484466)
+    expect(
+      mmqUtils.add(-0.4598, 5.0433)
+    ).toEqual(4.5835)
+    expect(
+      mmqUtils.add(17.67, 1.3)
+    ).toEqual(18.97)
+    expect(
+      mmqUtils.add(32654.324, 9666.7)
+    ).toEqual(42321.024)
+    expect(
+      mmqUtils.add(32654.111, 1e-4)
+    ).toEqual(32654.1111)
+    expect(
+      mmqUtils.add(1e-7, 1e-3)
+    ).toEqual(0.0010001)
+  })
+  test('multiply()', () => {
+    expect(
+      mmqUtils.multiply('abc', '123')
+    ).toEqual(0)
+    expect(
+      mmqUtils.multiply('22', 33)
+    ).toEqual(726)
+    expect(
+      mmqUtils.multiply(0, 33)
+    ).toEqual(0)
+    expect(
+      mmqUtils.multiply(500000, 2000)
+    ).toEqual(1000000000)
+    expect(
+      mmqUtils.multiply(6.66, 3.7)
+    ).toEqual(24.642)
+    expect(
+      mmqUtils.multiply(3.33, 0.9)
+    ).toEqual(2.997)
+    expect(
+      mmqUtils.multiply(5.024664, 0.453)
+    ).toEqual(2.276172792)
+    expect(
+      mmqUtils.multiply(158335.645, 100)
+    ).toEqual(15833564.5)
+    expect(
+      mmqUtils.multiply(25.77, 7.1)
+    ).toEqual(182.967)
+    expect(
+      mmqUtils.multiply(17.67, 100)
+    ).toEqual(1767)
+    expect(
+      mmqUtils.multiply(1e-7, 3.3)
+    ).toEqual(3.3e-7)
+    expect(
+      mmqUtils.multiply(3.3, 0.0000001)
+    ).toEqual(3.3e-7)
+    expect(
+      mmqUtils.multiply(1e-7, 1e-3)
+    ).toEqual(1e-10)
+  })
 })
