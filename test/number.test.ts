@@ -372,4 +372,86 @@ describe('Number functions', () => {
       mmqUtils.multiply(1e-7, 1e-3)
     ).toEqual(1e-10)
   })
+  test('subtract()', () => {
+    expect(
+      mmqUtils.subtract('abc', '123')
+    ).toEqual(-123)
+    expect(
+      mmqUtils.subtract('22', 33)
+    ).toEqual(-11)
+    expect(
+      mmqUtils.subtract(0, 33)
+    ).toEqual(-33)
+    expect(
+      mmqUtils.subtract(500000, 2000)
+    ).toEqual(498000)
+    expect(
+      mmqUtils.subtract(324253.1, 23559.9)
+    ).toEqual(300693.2)
+    expect(
+      mmqUtils.subtract(6.66, 3.9)
+    ).toEqual(2.76)
+    expect(
+      mmqUtils.subtract(3.33, 7.066)
+    ).toEqual(-3.736)
+    expect(
+      mmqUtils.subtract(5.024664, 0.453)
+    ).toEqual(4.571664)
+    expect(
+      mmqUtils.subtract(25.77, 3.6)
+    ).toEqual(22.17)
+    expect(
+      mmqUtils.subtract(1e-4, 1.999)
+    ).toEqual(-1.9989)
+    expect(
+      mmqUtils.subtract(1e-7, 1e-3)
+    ).toEqual(-0.0009999)
+  })
+  test('divide()', () => {
+    expect(
+      mmqUtils.divide('abc', '123')
+    ).toEqual(0)
+    expect(
+      mmqUtils.divide('33', 11)
+    ).toEqual(3)
+    expect(
+      mmqUtils.divide(0, 33)
+    ).toEqual(0)
+    expect(
+      mmqUtils.divide(21, 3)
+    ).toEqual(7)
+    expect(
+      mmqUtils.divide(100, 5)
+    ).toEqual(20)
+    expect(
+      mmqUtils.divide(500000, 2000)
+    ).toEqual(250)
+    expect(
+      mmqUtils.divide(1024.88, 0.2)
+    ).toEqual(5124.4)
+    expect(
+      mmqUtils.divide(51.2, 8)
+    ).toEqual(6.4)
+    expect(
+      mmqUtils.divide(2.997, 0.9)
+    ).toEqual(3.33)
+    expect(
+      mmqUtils.divide(2.276172792, 0.453)
+    ).toEqual(5.024664)
+    expect(
+      mmqUtils.divide(182.967, 25.77)
+    ).toEqual(7.1)
+    expect(
+      mmqUtils.divide(61.11109, 2)
+    ).toEqual(30.555545)
+    expect(
+      mmqUtils.divide(2641.1, 1e-9)
+    ).toEqual(2641100000000)
+    expect(
+      mmqUtils.divide(2641.1, 0.000000001)
+    ).toEqual(2641100000000)
+    expect(
+      mmqUtils.divide(1e-7, 1e-3)
+    ).toEqual(0.0001)
+  })
 })
