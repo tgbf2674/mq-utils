@@ -42,7 +42,10 @@ import clear from './Object/clear';
 import noop from './Function/noop';
 import throttle from './Function/throttle';
 import debounce from './Function/debounce';
+
 import arrayEach from './Array/arrayEach';
+import lastArrayEach from './Array/lastArrayEach';
+import arrayIndexOf from './Array/arrayIndexOf';
 
 import now from './Date/now';
 import toStringDate from './Date/toStringDate';
@@ -72,6 +75,6 @@ import endsWith from './String/endsWith';
 
 import unserialize from './Other/unserialize';
 import serialize from './Other/serialize';
-const mmqUtils = { isNaN: isNaN, isFinite, isUndefined, isArray, isFloat, isInteger, isFunction, isBoolean, isString, isNumber, isRegExp, isObject, isRealObject, isDate, isValidDate, isError, isTypeError, isEmpty, isNull, isSymbol, isElement, isDocument, isWindow, isFormData, isMap, isWeakMap, isSet, isWeakSet, isLeapYear, getType, getSize, stringToJSON, JSONtoString, keys, values,entries, first, last, noop, throttle, debounce, arrayEach, now, toStringDate, timestamp, clear, random, min, max, round, toNumberString,toValueString, trim, trimLeft, trimRight, repeat, padStart, padEnd, startsWith, endsWith, unserialize, serialize, toNumber, toInteger, add, multiply, subtract, divide }
+const mmqUtils = { isNaN: isNaN, isFinite, isUndefined, isArray, isFloat, isInteger, isFunction, isBoolean, isString, isNumber, isRegExp, isObject, isRealObject, isDate, isValidDate, isError, isTypeError, isEmpty, isNull, isSymbol, isElement, isDocument, isWindow, isFormData, isMap, isWeakMap, isSet, isWeakSet, isLeapYear, getType, getSize, stringToJSON, JSONtoString, keys, values,entries, first, last, noop, throttle, debounce, arrayEach, now, toStringDate, timestamp, clear, random, min, max, round, toNumberString,toValueString, trim, trimLeft, trimRight, repeat, padStart, padEnd, startsWith, endsWith, unserialize, serialize, toNumber, toInteger, add, multiply, subtract, divide, lastArrayEach, arrayIndexOf }
 
 export default mmqUtils
