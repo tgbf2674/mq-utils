@@ -1,5 +1,4 @@
 import mmqUtils from '../func';
-import arrayIndexOf from '../func/Array/arrayIndexOf';
 
 describe('array function', () => {
   test('includeArrays()', () => {
@@ -39,5 +38,43 @@ describe('array function', () => {
     expect(mmqUtils.remove([11,2,4,433], test)).toEqual([])
     const test1 = (item: any) => item !== 2
     expect(mmqUtils.remove([11,2,4,433], test1)).toEqual([11,4,433])
+  })
+  test('shuffle()', () => {
+    expect(
+      mmqUtils.shuffle(null)
+    ).toEqual([])
+    expect(
+      mmqUtils.shuffle(undefined)
+    ).toEqual([])
+    expect(
+      mmqUtils.shuffle('')
+    ).toEqual([])
+    expect(
+      mmqUtils.shuffle(/\d/)
+    ).toEqual([])
+    expect(
+      mmqUtils.shuffle(0)
+    ).toEqual([])
+    expect(
+      mmqUtils.shuffle(-1)
+    ).toEqual([])
+    expect(
+      mmqUtils.shuffle(333)
+    ).toEqual([])
+    expect(
+      mmqUtils.shuffle([])
+    ).toEqual([])
+    expect(
+      mmqUtils.shuffle('abc')
+    ).toEqual([])
+    expect(
+      mmqUtils.shuffle([11, '22', 33, '44']).length
+    ).toEqual(4)
+    expect(
+      mmqUtils.shuffle([11, 22, 33, 44, 55]).length
+    ).toEqual(5)
+    expect(
+      mmqUtils.shuffle([{ a: 11 }, { b: 22 }, { c: 33 }]).length
+    ).toEqual(3)
   })
 })
