@@ -65,8 +65,8 @@ describe('array function', () => {
       mmqUtils.shuffle([])
     ).toEqual([])
     expect(
-      mmqUtils.shuffle('abc')
-    ).toEqual([])
+      mmqUtils.shuffle('abc').length
+    ).toEqual(3)
     expect(
       mmqUtils.shuffle([11, '22', 33, '44']).length
     ).toEqual(4)
@@ -75,6 +75,65 @@ describe('array function', () => {
     ).toEqual(5)
     expect(
       mmqUtils.shuffle([{ a: 11 }, { b: 22 }, { c: 33 }]).length
+    ).toEqual(3)
+  })
+  test('sample()', () => {
+    expect(
+      mmqUtils.sample(null)
+    ).toEqual(undefined)
+    expect(
+      mmqUtils.sample(undefined)
+    ).toEqual(undefined)
+    expect(
+      mmqUtils.sample({})
+    ).toEqual(undefined)
+    expect(
+      mmqUtils.sample(-1)
+    ).toEqual(undefined)
+    expect(
+      mmqUtils.sample(0)
+    ).toEqual(undefined)
+    expect(
+      mmqUtils.sample(456)
+    ).toEqual(undefined)
+    expect(
+      mmqUtils.sample([])
+    ).toEqual(undefined)
+    expect(
+      mmqUtils.sample(0)
+    ).toEqual(undefined)
+    expect(
+      mmqUtils.sample(null, 4)
+    ).toEqual([])
+    expect(
+      mmqUtils.sample(undefined, 2)
+    ).toEqual([])
+    expect(
+      mmqUtils.sample([], undefined)
+    ).toEqual(undefined)
+    expect(
+      mmqUtils.sample({}, 2)
+    ).toEqual([])
+    expect(
+      mmqUtils.sample(-1, 3)
+    ).toEqual([])
+    expect(
+      mmqUtils.sample([], 2)
+    ).toEqual([])
+    expect(
+      ['a', 'b', 'c'].includes(mmqUtils.sample('abc'))
+    ).toEqual(true)
+    expect(
+      mmqUtils.sample('abc', 2).length
+    ).toEqual(2)
+    expect(
+      [11, 22, 33, 44, 55].includes(mmqUtils.sample([11, 22, 33, 44, 55]))
+    ).toEqual(true)
+    expect(
+      mmqUtils.sample([11, 22, 33, 44, 55], 2).length
+    ).toEqual(2)
+    expect(
+      mmqUtils.sample([11, 22, 33, 44, 55], 3).length
     ).toEqual(3)
   })
 })

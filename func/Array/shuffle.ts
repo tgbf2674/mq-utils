@@ -1,10 +1,14 @@
 import random from '../Number/random';
 import isArray from '../Base/isArray';
+import isString from '../Base/isString';
 
 function shuffle (arr: any): any[] {
   const res = []
-  let index = 0
+  if (isString(arr)) {
+    arr = arr.split('')
+  }
   if (isArray(arr)) {
+    let index = 0
     const list: any [] = arr.slice()
     const len = list.length - 1
     for (let i = 0; i <= len; i++) {
