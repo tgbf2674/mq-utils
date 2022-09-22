@@ -136,4 +136,77 @@ describe('array function', () => {
       mmqUtils.sample([11, 22, 33, 44, 55], 3).length
     ).toEqual(3)
   })
+  test('toArray()', () => {
+    expect(
+      mmqUtils.toArray(null)
+    ).toEqual([])
+    expect(
+      mmqUtils.toArray(undefined)
+    ).toEqual([])
+    expect(
+      mmqUtils.toArray(0)
+    ).toEqual([])
+    expect(
+      mmqUtils.toArray('')
+    ).toEqual([])
+    expect(
+      mmqUtils.toArray(true)
+    ).toEqual([])
+    expect(
+      mmqUtils.toArray(/1,2,3/)
+    ).toEqual([])
+    expect(
+      mmqUtils.toArray([])
+    ).toEqual([])
+    expect(
+      mmqUtils.toArray({})
+    ).toEqual([])
+    expect(
+      mmqUtils.toArray(10)
+    ).toEqual([])
+    expect(
+      mmqUtils.toArray({ name: 'test1', age: 25 })
+    ).toEqual(['test1', 25])
+  })
+  test('sum()', () => {
+    expect(
+      mmqUtils.sum(undefined)
+    ).toEqual(0)
+    expect(
+      mmqUtils.sum(0)
+    ).toEqual(0)
+    expect(
+      mmqUtils.sum(-1)
+    ).toEqual(0)
+    expect(
+      mmqUtils.sum(10)
+    ).toEqual(0)
+    expect(
+      mmqUtils.sum(null)
+    ).toEqual(0)
+    expect(
+      mmqUtils.sum('')
+    ).toEqual(0)
+    expect(
+      mmqUtils.sum(/\w/)
+    ).toEqual(0)
+    expect(
+      mmqUtils.sum({})
+    ).toEqual(0)
+    expect(
+      mmqUtils.sum([])
+    ).toEqual(0)
+    expect(
+      mmqUtils.sum([22, 66, 88])
+    ).toEqual(176)
+    expect(
+      mmqUtils.sum([{ value: 11 }, { value: 22 }, { value: 66 }], 'value')
+    ).toEqual(99)
+    expect(
+      mmqUtils.sum([{ value: 11 }, { value: 22 }, { value: 66 }, 44], 'value')
+    ).toEqual(99)
+    expect(
+      mmqUtils.sum({ val1: 21, val2: 34, val3: 47 })
+    ).toEqual(102)
+  })
 })
