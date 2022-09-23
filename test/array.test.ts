@@ -209,4 +209,49 @@ describe('array function', () => {
       mmqUtils.sum({ val1: 21, val2: 34, val3: 47 })
     ).toEqual(102)
   })
+  test('uniq()', () => {
+    expect(
+      mmqUtils.uniq()
+    ).toEqual([])
+    expect(
+      mmqUtils.uniq(null)
+    ).toEqual([])
+    expect(
+      mmqUtils.uniq(undefined)
+    ).toEqual([])
+    expect(
+      mmqUtils.uniq(-1)
+    ).toEqual([])
+    expect(
+      mmqUtils.uniq(123)
+    ).toEqual([])
+    expect(
+      mmqUtils.uniq('')
+    ).toEqual([])
+    expect(
+      mmqUtils.uniq(/\d/)
+    ).toEqual([])
+    expect(
+      mmqUtils.uniq([])
+    ).toEqual([])
+    expect(
+      mmqUtils.uniq({})
+    ).toEqual([])
+    expect(
+      mmqUtils.uniq('abcb')
+    ).toEqual(['a', 'b', 'c'])
+    expect(
+      mmqUtils.uniq([11, 22, 33, 33, 22, '22'])
+    ).toEqual([11, 22, 33, '22'])
+    expect(
+      mmqUtils.uniq([11, 22, 33, 33, 22, 55])
+    ).toEqual([11, 22, 33, 55])
+    expect(
+      mmqUtils.uniq([11, 33, 33, { a: 11 }, { a: 11 }])
+    ).toEqual([11, 33, { a: 11 }, { a: 11 }])
+    const a1 = { a: 11 }
+    expect(
+      mmqUtils.uniq([11, 33, 33, a1, a1])
+    ).toEqual([11, 33, { a: 11 }])
+  })
 })
