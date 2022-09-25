@@ -254,4 +254,42 @@ describe('array function', () => {
       mmqUtils.uniq([11, 33, 33, a1, a1])
     ).toEqual([11, 33, { a: 11 }])
   })
+  test('flat()', () => {
+    expect(
+      mmqUtils.flat()
+    ).toEqual([])
+    expect(
+      mmqUtils.flat(null)
+    ).toEqual([])
+    expect(
+      mmqUtils.flat(undefined)
+    ).toEqual([])
+    expect(
+      mmqUtils.flat(0)
+    ).toEqual([])
+    expect(
+      mmqUtils.flat('')
+    ).toEqual([])
+    expect(
+      mmqUtils.flat([])
+    ).toEqual([])
+    expect(
+      mmqUtils.flat({})
+    ).toEqual([])
+    expect(
+      mmqUtils.flat(/\d/)
+    ).toEqual([])
+    expect(
+      mmqUtils.flat([[1, 2, 3], [4, 5, 6], [7, 8]])
+    ).toEqual([1, 2, 3, 4, 5, 6, 7, 8])
+    expect(
+      mmqUtils.flat([1, [2, [3, [4]], 5]])
+    ).toEqual([1, 2, [3, [4]], 5])
+    expect(
+      mmqUtils.flat([1, [2, [3, [4]], 5]], true)
+    ).toEqual([1, 2, 3, 4, 5])
+    expect(
+      mmqUtils.flat([1, [2, [3, [4]], [[[5], [6, [7]]]]]], true)
+    ).toEqual([1, 2, 3, 4, 5, 6, 7])
+  })
 })
