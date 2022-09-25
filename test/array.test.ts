@@ -425,4 +425,150 @@ describe('array function', () => {
       }
     ])
   })
+  test('toTreeArray()', () => {
+    expect(
+      mmqUtils.toTreeArray()
+    ).toEqual([])
+    expect(
+      mmqUtils.toTreeArray(null)
+    ).toEqual([])
+    expect(
+      mmqUtils.toTreeArray(0)
+    ).toEqual([])
+    expect(
+      mmqUtils.toTreeArray(-1)
+    ).toEqual([])
+    expect(
+      mmqUtils.toTreeArray(123)
+    ).toEqual([])
+    expect(
+      mmqUtils.toTreeArray([])
+    ).toEqual([])
+    expect(
+      mmqUtils.toTreeArray({})
+    ).toEqual([])
+    const list1 = [
+      {
+        id: 1,
+        name: '111',
+        children: [
+          {
+            id: 2,
+            parentId: 1,
+            name: '222',
+            children: [
+              {
+                id: 4,
+                parentId: 2,
+                name: '444',
+                children: []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: 3,
+        name: '333',
+        children: []
+      }
+    ]
+    expect(
+      mmqUtils.toTreeArray(list1)
+    ).toEqual([
+      list1[0],
+      list1[0].children[0],
+      list1[0].children[0].children[0],
+      list1[1]
+    ])
+    const list2 = [
+      {
+        data: { id: 1, name: '111' },
+        id: 1,
+        children: [
+          {
+            data: { id: 2, parentId: 1, name: '222' },
+            id: 2,
+            parentId: 1,
+            children: [
+              {
+                data: { id: 4, parentId: 2, name: '444' },
+                id: 4,
+                parentId: 2,
+                children: []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        data: { id: 3, name: '333' },
+        id: 3,
+        children: []
+      },
+      {
+        data: { id: 5, parentId: 22, name: '555' },
+        id: 5,
+        parentId: 22,
+        children: []
+      }
+    ]
+    expect(
+      mmqUtils.toTreeArray(list2, { data: 'data' })
+    ).toEqual([
+      { id: 1, name: '111' },
+      { id: 2, parentId: 1, name: '222' },
+      { id: 4, parentId: 2, name: '444' },
+      { id: 3, name: '333' },
+      { id: 5, parentId: 22, name: '555' }
+    ])
+    const list3 = [
+      {
+        id: 1,
+        name: '111',
+        children: [
+          {
+            id: 2,
+            parentId: 1,
+            name: '222',
+            children: [
+              {
+                id: 4,
+                parentId: 2,
+                name: '444',
+                children: []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: 3,
+        name: '333',
+        children: []
+      }
+    ]
+    expect(
+      mmqUtils.toTreeArray(list3, { clear: true })
+    ).toEqual([
+      {
+        id: 1,
+        name: '111'
+      },
+      {
+        id: 2,
+        parentId: 1,
+        name: '222'
+      },
+      {
+        id: 4,
+        parentId: 2,
+        name: '444'
+      },
+      {
+        id: 3,
+        name: '333'
+      }
+    ])
+  })
 })

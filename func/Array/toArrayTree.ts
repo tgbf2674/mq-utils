@@ -1,6 +1,6 @@
 import remove from './remove';
 import isArray from '../Base/isArray';
-
+import treeDefault from './arrDefault';
 type optionsType = {
   strict?: boolean,
   parentKey?: string,
@@ -19,11 +19,7 @@ function strictTree (array: any[], optChildren: string) {
 }
 
 function toArrayTree (array?: any, options?: optionsType): any[] {
-  const treeOptions = {
-    parentKey: 'parentId',
-    key: 'id',
-    children: 'children'
-  }
+  const treeOptions = treeDefault
   const opts = Object.assign({}, treeOptions, options)
   const optStrict = opts.strict
   const optKey = opts.key
