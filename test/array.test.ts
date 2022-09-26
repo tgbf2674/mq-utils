@@ -638,4 +638,36 @@ describe('array function', () => {
     }, { children: 'childs' })
     expect(rest).toEqual([{ a: 11 }, { a: 22, childs: [{ a: 222 }, { a: 223 }] }, { a: 222 }, { a: 223 }])
   })
+  test('mapTree()', () => {
+    expect(
+      mmqUtils.mapTree(null, (item: any) => {
+        return item.a * 2
+      })
+    ).toEqual([])
+    expect(
+      mmqUtils.mapTree([{ a: 11 }, { a: 22 }], (item: any) => {
+        return item.a * 2
+      })
+    ).toEqual([22, 44])
+    expect(
+      mmqUtils.mapTree([{ a: 11 }, { a: 22 }], (item: any) => {
+        return { a: item.a * 2 }
+      })
+    ).toEqual([{ a: 22 }, { a: 44 }])
+    expect(
+      mmqUtils.mapTree([{ a: 11 }, { a: 22, children: [{ a: 222 }, { a: 223 }] }], (item: any) => {
+        return { a: item.a * 2 }
+      })
+    ).toEqual([{ a: 22 }, { a: 44, children: [{ a: 444 }, { a: 446 }] }])
+    expect(
+      mmqUtils.mapTree([{ a: 11 }, { a: 22, childs: [{ a: 222 }, { a: 223 }] }], (item: any) => {
+        return { a: item.a * 2 }
+      }, { children: 'childs' })
+    ).toEqual([{ a: 22 }, { a: 44, childs: [{ a: 444 }, { a: 446 }] }])
+    expect(
+      mmqUtils.mapTree([{ a: 11 }, { a: 22, childs: [{ a: 222 }, { a: 223 }] }], (item: any) => {
+        return { a: item.a * 2 }
+      }, { children: 'childs', mapChildren: 'childs2' })
+    ).toEqual([{ a: 22 }, { a: 44, childs2: [{ a: 444 }, { a: 446 }] }])
+  })
 })
