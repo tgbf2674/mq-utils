@@ -7,6 +7,16 @@ yarn.lock
 /*.js
 /*.ts
 /*.d.ts
+Array
+Base
+Function
+Number
+Object
+Object
+public
+src
+index.js
+
 
 # local env files
 .env.local

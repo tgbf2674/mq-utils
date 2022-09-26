@@ -1,16 +1,43 @@
-# Vue 3 + TypeScript + Vite
+# mmqUtils
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+函数库、工具类
 
-## Recommended IDE Setup
+## browser support
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+![IE](https://raw.github.com/alrra/browser-logos/master/src/archive/internet-explorer_7-8/internet-explorer_7-8_48x48.png) | ![Edge](https://raw.github.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Chrome](https://raw.github.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![Opera](https://raw.github.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
+--- | --- | --- | --- | --- | --- |
+7+ ✔ | Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ | 6+ ✔ |
 
-## Type Support For `.vue` Imports in TS
+## doc
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+暂无，具体使用可看单元测试
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
+## install
+```shell
+npm install mmq-utils
+yarn install mmq-utils
+pnpm install mmq-utils
+```
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+```javascript
+import mmqUtils from 'mmq-utils'
+```
+
+### On demand import
+这样按需引入方法，可以使体积达到最小
+```javascript
+import sum from 'mmq-utils';
+```
+
+### Import all methods
+
+```javascript
+import mmqUtils from 'xe-utils'
+mmqUtils.toDateString(Date.now())
+// 2018-01-01 10:30:28
+mmqUtils.toStringDate('2018-01-01 10:30:00')
+// Mon Jan 01 2018 10:30:00 GMT+0800 (中国标准时间)
+```
+
+## License
+[MIT](LICENSE) © 2017-present, tgbf2674

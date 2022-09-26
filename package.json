@@ -38,7 +38,7 @@
     "vite-plugin-eslint": "^1.8.1",
     "vue-tsc": "^0.39.5"
   },
-  "description": "一个函数库，工具类,兼容js,ts环境，已有上百个方法,均通过jest单元测试自测，平时遇到需要自己写的utlis时会继续更新",
+  "description": "一个函数库，工具类,兼容js,ts环境，包大小共50几KB,轻量实用,已有上百个方法,均通过jest单元测试自测，平时遇到需要自己写的utlis时会继续更新",
   "main": "index.js",
   "directories": {
     "test": "test"
