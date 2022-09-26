@@ -1,4 +1,5 @@
 import mmqUtils from '../func';
+import eachTree from '../func/Array/eachTree';
 
 describe('array function', () => {
   test('includeArrays()', () => {
@@ -570,5 +571,71 @@ describe('array function', () => {
         name: '333'
       }
     ])
+  })
+  test('searchTree()', () => {
+    expect(
+      mmqUtils.searchTree(null, (item: any) => item.a === 33)
+    ).toEqual([])
+    expect(
+      mmqUtils.searchTree([{ a: 11 }, { a: 22 }], (item: any) => item.a === 33)
+    ).toEqual([])
+    expect(
+      mmqUtils.searchTree([{ a: 11 }, { a: 22 }], (item: any) => item.a === 11)
+    ).toEqual([{ a: 11, children: [] }])
+    expect(
+      mmqUtils.searchTree([{ id: 1 }, { id: 2, children: [{ id: 0 }] }, { id: 3, children: [{ id: 30 }] }], (item: any) => item.id > 1)
+    ).toEqual([{ id: 2, children: [{ id: 0, children: [] }] }, { id: 3, children: [{ id: 30, children: [] }] }])
+    expect(
+      mmqUtils.searchTree([{ id: 1 }, { id: 2, childs: [{ id: 0 }] }, { id: 3, childs: [{ id: 30 }] }], (item: any) => item.id >= 2, { children: 'childs' })
+    ).toEqual([{ id: 2, childs: [{ id: 0, childs: [] }] }, { id: 3, childs: [{ id: 30, childs: [] }] }])
+  })
+  test('filterTree()', () => {
+    expect(
+      mmqUtils.filterTree(null, (item: any) => {
+        return item.a === 33
+      })
+    ).toEqual([])
+    expect(
+      mmqUtils.filterTree([{ a: 11 }, { a: 22 }], (item: any) => {
+        return item.a === 33
+      })
+    ).toEqual([])
+    expect(
+      mmqUtils.filterTree([{ a: 11 }, { a: 22 }], (item: any) => {
+        return item.a === 11
+      })
+    ).toEqual([{ a: 11 }])
+    expect(
+      mmqUtils.filterTree([{ a: 11 }, { a: 22, children: [{ a: 222 }, { a: 223 }] }], (item: any) => {
+        return item.a >= 22
+      })
+    ).toEqual([{ a: 22, children: [{ a: 222 }, { a: 223 }] }, { a: 222 }, { a: 223 }])
+    expect(
+      mmqUtils.filterTree([{ a: 11 }, { a: 22, childs: [{ a: 222 }, { a: 223 }] }], (item: any) => {
+        return item.a >= 22
+      }, { children: 'childs' })
+    ).toEqual([{ a: 22, childs: [{ a: 222 }, { a: 223 }] }, { a: 222 }, { a: 223 }])
+  })
+  test('eachTree()', () => {
+    let rest: any[] = []
+    mmqUtils.eachTree(null, (item: any) => {
+      rest.push(item)
+    })
+    expect(rest).toEqual([])
+    rest = []
+    mmqUtils.eachTree([{ a: 11 }, { a: 22 }], (item: any) => {
+      rest.push(item)
+    })
+    expect(rest).toEqual([{ a: 11 }, { a: 22 }])
+    rest = []
+    mmqUtils.eachTree([{ a: 11 }, { a: 22, children: [{ a: 222 }, { a: 223 }] }], (item: any) => {
+      rest.push(item)
+    })
+    expect(rest).toEqual([{ a: 11 }, { a: 22, children: [{ a: 222 }, { a: 223 }] }, { a: 222 }, { a: 223 }])
+    rest = []
+    mmqUtils.eachTree([{ a: 11 }, { a: 22, childs: [{ a: 222 }, { a: 223 }] }], (item: any) => {
+      rest.push(item)
+    }, { children: 'childs' })
+    expect(rest).toEqual([{ a: 11 }, { a: 22, childs: [{ a: 222 }, { a: 223 }] }, { a: 222 }, { a: 223 }])
   })
 })
