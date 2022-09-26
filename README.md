@@ -10,7 +10,7 @@
 
 ## doc
 
-暂无，具体使用可看单元测试
+暂无,有计划做，具体使用可看单元测试
 
 ## install
 ```shell
@@ -40,4 +40,4 @@ mmqUtils.toStringDate('2018-01-01 10:30:00')
 ```
 
 ## License
-[MIT](LICENSE) © 2017-present, tgbf2674
+[MIT](LICENSE) © 2021-present, tgbf2674
