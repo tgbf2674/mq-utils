@@ -1,6 +1,6 @@
 # mmqUtils
 
-函数库、工具类
+一个使用ts+jest编写的函数库、工具类，目前已有百余方法，大小仅50余K，支持js与ts环境，这意味着你可以在vue2,vue3等环境下使用它们，按照个人习惯，封装了常用的工具类，节约开发时间，增强代码复用。
 
 ## browser support
 
@@ -32,7 +32,7 @@ import sum from 'mmq-utils';
 ### Import all methods
 
 ```javascript
-import mmqUtils from 'xe-utils'
+import mmqUtils from 'mmq-utils'
 mmqUtils.toDateString(Date.now())
 // 2018-01-01 10:30:28
 mmqUtils.toStringDate('2018-01-01 10:30:00')

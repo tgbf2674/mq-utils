@@ -13,7 +13,9 @@ Base
 Function
 Number
 Object
-Object
+Date
+Other
+String
 public
 src
 index.js
