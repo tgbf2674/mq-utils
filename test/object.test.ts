@@ -17,7 +17,7 @@ describe('object function', () => {
     expect(v1.a === v2.a).toEqual(true)
     expect(v1 === v3).toEqual(false)
     const a = {
-      name: 'sunshine_lin',
+      name: 'xasd',
       age: 23,
       hobbies: { sports: '篮球', tv: '雍正王朝' },
       works: ['2020', '2021'],
@@ -29,5 +29,14 @@ describe('object function', () => {
     }
     const b = mmqUtils.clone(a, true)
     expect(a.func === b.func).toEqual(false)
+  })
+  test('objectEach()', () => {
+    const rest: any[] = []
+    mmqUtils.objectEach({ a: 11, b: 22, c: 33, d: 44 }, (item: any, key: number, obj: any) => {
+      rest.push([item, key])
+    })
+    expect(
+      rest
+    ).toEqual([[11, 'a'], [22, 'b'], [33, 'c'], [44, 'd']])
   })
 })
