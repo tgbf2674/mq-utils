@@ -1,5 +1,4 @@
 import mmqUtils from '../func';
-import eachTree from '../func/Array/eachTree';
 
 describe('array function', () => {
   test('includeArrays()', () => {
@@ -349,47 +348,6 @@ describe('array function', () => {
         children: []
       }
     ])
-    // const list3 = [
-    //   { id: 1, name: '111' },
-    //   { id: 2, parentId: 1, name: '222' },
-    //   { id: 3, name: '333' },
-    //   { id: 4, parentId: 2, name: '444' },
-    //   { id: 5, parentId: 22, name: '555' }
-    // ]
-    // expect(
-    //   mmqUtils.toArrayTree(list3, { data: 'data' })
-    // ).toEqual([
-    //   {
-    //     data: { id: 1, name: '111' },
-    //     id: 1,
-    //     children: [
-    //       {
-    //         data: { id: 2, parentId: 1, name: '222' },
-    //         id: 2,
-    //         parentId: 1,
-    //         children: [
-    //           {
-    //             data: { id: 4, parentId: 2, name: '444' },
-    //             id: 4,
-    //             parentId: 2,
-    //             children: []
-    //           }
-    //         ]
-    //       }
-    //     ]
-    //   },
-    //   {
-    //     data: { id: 3, name: '333' },
-    //     id: 3,
-    //     children: []
-    //   },
-    //   {
-    //     data: { id: 5, parentId: 22, name: '555' },
-    //     id: 5,
-    //     parentId: 22,
-    //     children: []
-    //   }
-    // ])
     const list4 = [
       { id: 1, name: '111' },
       { id: 2, parentId: 1, name: '222' },

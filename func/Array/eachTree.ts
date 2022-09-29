@@ -1,8 +1,7 @@
 import isArray from '../Base/isArray';
 
 type optionsType = {
-  children?: string,
-  mapChildren?: string
+  children?: string
 }
 
 function eachTreeItem (parentAllow: boolean, parent: any ,obj: any, iterate: any, options?: optionsType): void {
