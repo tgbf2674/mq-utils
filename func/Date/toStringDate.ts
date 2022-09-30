@@ -167,7 +167,7 @@ function toStringDate(str?: string | Date | number, format?:string): Date {
         }
       }
     }
-  }
+  } else if (typeof str === 'number') return new Date(str)
   return new Date('')
 }
 

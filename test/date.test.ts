@@ -395,4 +395,153 @@ describe('date function', () => {
       mmqUtils.getWhatMonth('2021-01-31', 12)
     ).toEqual(new Date(2022, 0, 31))
   })
+  test('getWhatDay()', () => {
+    expect(
+      mmqUtils.getWhatDay(0).toString()
+    ).toEqual('Thu Jan 01 1970 08:00:00 GMT+0800 (中国标准时间)')
+    expect(
+      mmqUtils.getWhatDay(-1).toString()
+    ).toEqual('Thu Jan 01 1970 07:59:59 GMT+0800 (中国标准时间)')
+    expect(
+      mmqUtils.getWhatDay(123).toString()
+    ).toEqual('Thu Jan 01 1970 08:00:00 GMT+0800 (中国标准时间)')
+    expect(
+      mmqUtils.getWhatDay(null).toString()
+    ).toEqual('Invalid Date')
+    expect(
+      mmqUtils.getWhatDay(undefined).toString()
+    ).toEqual('Invalid Date')
+    expect(
+      mmqUtils.getWhatDay({}).toString()
+    ).toEqual('Invalid Date')
+    expect(
+      mmqUtils.getWhatDay([]).toString()
+    ).toEqual('Invalid Date')
+    expect(
+      mmqUtils.getWhatDay([2018, 1, 1]).toString()
+    ).toEqual('Invalid Date')
+    expect(
+      mmqUtils.getWhatDay({ time: 2018 }).toString()
+    ).toEqual('Invalid Date')
+    expect(
+      mmqUtils.getWhatDay('null').toString()
+    ).toEqual('Invalid Date')
+    expect(
+      mmqUtils.getWhatDay(new Date('')).toString()
+    ).toEqual('Invalid Date')
+    expect(
+      mmqUtils.getWhatDay(new Date('abc')).toString()
+    ).toEqual('Invalid Date')
+    expect(
+      mmqUtils.getWhatDay(date, -1)
+    ).toEqual(new Date(2016, 11, 31, 14, 5, 30, 99))
+    expect(
+      mmqUtils.getWhatDay(time, 1)
+    ).toEqual(new Date(2017, 0, 2, 14, 5, 30, 99))
+    expect(
+      mmqUtils.getWhatDay('2017-12-20', -1)
+    ).toEqual(new Date(2017, 11, 19))
+    expect(
+      mmqUtils.getWhatDay(new Date(2017, 11, 10), -1)
+    ).toEqual(new Date(2017, 11, 9))
+    expect(
+      mmqUtils.getWhatDay('2017-12-20', 1)
+    ).toEqual(new Date(2017, 11, 21))
+    expect(
+      mmqUtils.getWhatDay('2017-12-20', 0, 'first')
+    ).toEqual(new Date(2017, 11, 20, 0, 0, 0, 0))
+    expect(
+      mmqUtils.getWhatDay('2017-12-20', 0, 'last')
+    ).toEqual(new Date(2017, 11, 20, 23, 59, 59, 999))
+  })
+
+  test('getWhatYear()', () => {
+    expect(
+      mmqUtils.getWhatYear(0) instanceof Date
+    ).toEqual(true)
+    expect(
+      mmqUtils.getWhatYear(-1) instanceof Date
+    ).toEqual(true)
+    expect(
+      mmqUtils.getWhatYear([]) instanceof Date
+    ).toEqual(true)
+    expect(
+      mmqUtils.getWhatYear({}) instanceof Date
+    ).toEqual(true)
+    expect(
+      mmqUtils.getWhatYear(null) instanceof Date
+    ).toEqual(true)
+    expect(
+      mmqUtils.getWhatYear(undefined) instanceof Date
+    ).toEqual(true)
+    expect(
+      mmqUtils.getWhatYear([2018, 1, 1]) instanceof Date
+    ).toEqual(true)
+    expect(
+      mmqUtils.getWhatYear({ time: 2018 }) instanceof Date
+    ).toEqual(true)
+    expect(
+      mmqUtils.getWhatYear('null') instanceof Date
+    ).toEqual(true)
+    expect(
+      mmqUtils.getWhatYear(new Date('')) instanceof Date
+    ).toEqual(true)
+    expect(
+      mmqUtils.getWhatYear(new Date('abc')) instanceof Date
+    ).toEqual(true)
+    expect(
+      mmqUtils.getWhatYear(0).toString()
+    ).toEqual('Thu Jan 01 1970 08:00:00 GMT+0800 (中国标准时间)')
+    expect(
+      mmqUtils.getWhatYear(-1).toString()
+    ).toEqual('Thu Jan 01 1970 07:59:59 GMT+0800 (中国标准时间)')
+    expect(
+      mmqUtils.getWhatYear([]).toString()
+    ).toEqual('Invalid Date')
+    expect(
+      mmqUtils.getWhatYear({}).toString()
+    ).toEqual('Invalid Date')
+    expect(
+      mmqUtils.getWhatYear(null).toString()
+    ).toEqual('Invalid Date')
+    expect(
+      mmqUtils.getWhatYear(undefined).toString()
+    ).toEqual('Invalid Date')
+    expect(
+      mmqUtils.getWhatYear([2018, 1, 1]).toString()
+    ).toEqual('Invalid Date')
+    expect(
+      mmqUtils.getWhatYear({ time: 2018 }).toString()
+    ).toEqual('Invalid Date')
+    expect(
+      mmqUtils.getWhatYear('null').toString()
+    ).toEqual('Invalid Date')
+    expect(
+      mmqUtils.getWhatYear(new Date('')).toString()
+    ).toEqual('Invalid Date')
+    expect(
+      mmqUtils.getWhatYear(new Date('abc')).toString()
+    ).toEqual('Invalid Date')
+    expect(
+      mmqUtils.getWhatYear(date, -1)
+    ).toEqual(new Date(2016, 0, 1, 14, 5, 30, 99))
+    expect(
+      mmqUtils.getWhatYear(time, -1)
+    ).toEqual(new Date(2016, 0, 1, 14, 5, 30, 99))
+    expect(
+      mmqUtils.getWhatYear('2017-12-20', -1)
+    ).toEqual(new Date(2016, 11, 20))
+    expect(
+      mmqUtils.getWhatYear('2017-12-20', 1)
+    ).toEqual(new Date(2018, 11, 20))
+    expect(
+      mmqUtils.getWhatYear(new Date(2017, 11, 10), 1)
+    ).toEqual(new Date(2018, 11, 10))
+    expect(
+      mmqUtils.getWhatYear('2017-12-20', 0, 'first')
+    ).toEqual(new Date(2017, 0, 1, 0, 0, 0, 0))
+    expect(
+      mmqUtils.getWhatYear('2017-12-20', 0, 'last')
+    ).toEqual(new Date(2017, 11, 31, 23, 59, 59, 999))
+  })
 })
