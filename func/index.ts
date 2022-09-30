@@ -71,6 +71,7 @@ import toDateString from './Date/toDateString';
 import getWhatMonth from './Date/getWhatMonth';
 import getWhatDay from './Date/getWhatDay';
 import getWhatYear from './Date/getWhatYear';
+import getDayOfYear from './Date/getDayOfYear';
 
 import random from './Number/random';
 import min from './Number/min';
@@ -96,6 +97,6 @@ import endsWith from './String/endsWith';
 
 import unserialize from './Other/unserialize';
 import serialize from './Other/serialize';
-const mmqUtils = { isNaN: isNaN, isFinite, isUndefined, isArray, isFloat, isInteger, isFunction, isBoolean, isString, isNumber, isRegExp, isObject, isRealObject, isDate, isValidDate, isError, isTypeError, isEmpty, isNull, isSymbol, isElement, isDocument, isWindow, isFormData, isMap, isWeakMap, isSet, isWeakSet, isLeapYear, getType, getSize, stringToJSON, JSONtoString, keys, values,entries, first, last, noop, throttle, debounce, arrayEach, now, toStringDate, timestamp, clear, random, min, max, round, toNumberString,toValueString, trim, trimLeft, trimRight, repeat, padStart, padEnd, startsWith, endsWith, unserialize, serialize, toNumber, toInteger, add, multiply, subtract, divide, lastArrayEach, arrayIndexOf, includeArrays, lastIndexOf, remove, shuffle, sample, toArray, sum, uniq, flat, toArrayTree, toTreeArray, searchTree, filterTree, eachTree, mapTree, clone, objectEach, toDateString, getWhatMonth, getWhatDay, getWhatYear }
+const mmqUtils = { isNaN: isNaN, isFinite, isUndefined, isArray, isFloat, isInteger, isFunction, isBoolean, isString, isNumber, isRegExp, isObject, isRealObject, isDate, isValidDate, isError, isTypeError, isEmpty, isNull, isSymbol, isElement, isDocument, isWindow, isFormData, isMap, isWeakMap, isSet, isWeakSet, isLeapYear, getType, getSize, stringToJSON, JSONtoString, keys, values,entries, first, last, noop, throttle, debounce, arrayEach, now, toStringDate, timestamp, clear, random, min, max, round, toNumberString,toValueString, trim, trimLeft, trimRight, repeat, padStart, padEnd, startsWith, endsWith, unserialize, serialize, toNumber, toInteger, add, multiply, subtract, divide, lastArrayEach, arrayIndexOf, includeArrays, lastIndexOf, remove, shuffle, sample, toArray, sum, uniq, flat, toArrayTree, toTreeArray, searchTree, filterTree, eachTree, mapTree, clone, objectEach, toDateString, getWhatMonth, getWhatDay, getWhatYear, getDayOfYear }
 
 export default mmqUtils

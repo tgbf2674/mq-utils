@@ -544,4 +544,63 @@ describe('date function', () => {
       mmqUtils.getWhatYear('2017-12-20', 0, 'last')
     ).toEqual(new Date(2017, 11, 31, 23, 59, 59, 999))
   })
+  test('getDayOfYear()', () => {
+    expect(
+      mmqUtils.getDayOfYear(0).toString()
+    ).toEqual('365')
+    expect(
+      mmqUtils.getDayOfYear(null).toString()
+    ).toEqual('NaN')
+    expect(
+      mmqUtils.getDayOfYear(undefined).toString()
+    ).toEqual('NaN')
+    expect(
+      mmqUtils.getDayOfYear({}).toString()
+    ).toEqual('NaN')
+    expect(
+      mmqUtils.getDayOfYear([]).toString()
+    ).toEqual('NaN')
+    expect(
+      mmqUtils.getDayOfYear([2018, 1, 1]).toString()
+    ).toEqual('NaN')
+    expect(
+      mmqUtils.getDayOfYear({ time: 2018 }).toString()
+    ).toEqual('NaN')
+    expect(
+      mmqUtils.getDayOfYear('null').toString()
+    ).toEqual('NaN')
+    expect(
+      mmqUtils.getDayOfYear(new Date('')).toString()
+    ).toEqual('NaN')
+    expect(
+      mmqUtils.getDayOfYear(new Date('abc')).toString()
+    ).toEqual('NaN')
+    expect(
+      mmqUtils.getDayOfYear(date)
+    ).toEqual(365)
+    expect(
+      mmqUtils.getDayOfYear(time)
+    ).toEqual(365)
+    expect(
+      mmqUtils.getDayOfYear('2017-12-20')
+    ).toEqual(365)
+    expect(
+      mmqUtils.getDayOfYear(new Date(2017, 11, 20))
+    ).toEqual(365)
+    expect(
+      mmqUtils.getDayOfYear('2017-12-20') === mmqUtils.getDayOfYear(new Date(2017, 11, 20))
+    ).toEqual(true)
+    expect(
+      mmqUtils.getDayOfYear('2019-12-10', 1)
+    ).toEqual(366)
+    expect(
+      mmqUtils.getDayOfYear(new Date(2019, 11, 10), 1)
+    ).toEqual(366)
+    expect(
+      mmqUtils.getDayOfYear('2019-12-10', 1) === mmqUtils.getDayOfYear(new Date(2019, 11, 10), 1)
+    ).toEqual(true)
+    expect(
+      mmqUtils.getDayOfYear('2020-12-10')
+    ).toEqual(366)
+  })
 })
