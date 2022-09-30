@@ -603,4 +603,48 @@ describe('date function', () => {
       mmqUtils.getDayOfYear('2020-12-10')
     ).toEqual(366)
   })
+  test('getYearDay()', () => {
+    expect(
+      mmqUtils.getYearDay(0).toString()
+    ).toEqual('1')
+    expect(
+      mmqUtils.getYearDay(-1).toString()
+    ).toEqual('1')
+    expect(
+      mmqUtils.getYearDay(null).toString()
+    ).toEqual('NaN')
+    expect(
+      mmqUtils.getYearDay(undefined).toString()
+    ).toEqual('NaN')
+    expect(
+      mmqUtils.getYearDay({}).toString()
+    ).toEqual('NaN')
+    expect(
+      mmqUtils.getYearDay([]).toString()
+    ).toEqual('NaN')
+    expect(
+      mmqUtils.getYearDay([2018, 1, 1]).toString()
+    ).toEqual('NaN')
+    expect(
+      mmqUtils.getYearDay({ time: 2018 }).toString()
+    ).toEqual('NaN')
+    expect(
+      mmqUtils.getYearDay('null').toString()
+    ).toEqual('NaN')
+    expect(
+      mmqUtils.getYearDay(new Date('')).toString()
+    ).toEqual('NaN')
+    expect(
+      mmqUtils.getYearDay(new Date('abc')).toString()
+    ).toEqual('NaN')
+    expect(
+      mmqUtils.getYearDay(date)
+    ).toEqual(1)
+    expect(
+      mmqUtils.getYearDay('2017-01-20')
+    ).toEqual(20)
+    expect(
+      mmqUtils.getYearDay('2018-05-20')
+    ).toEqual(140)
+  })
 })
