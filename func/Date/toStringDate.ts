@@ -142,7 +142,7 @@ function parseTimeZone (resMaps: any) {
 }
 
 function toStringDate(str?: string | Date | number, format?:string): Date {
-  if (str) {
+  if (str || str === 0) {
       if (str instanceof Date) {
         return new Date(str.getTime())
       } else if (typeof str === 'string' && !format && /^[0-9]{11,15}$/.test(str)) {
