@@ -1,7 +1,7 @@
 {
   "name": "mmq-utils",
   "private": false,
-  "version": "1.0.1",
+  "version": "1.0.3",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -13,6 +13,7 @@
   "dependencies": {
     "gulp-replace": "^1.1.3",
     "gulp-typescript": "6.0.0-alpha.1",
+    "gulp-uglify": "^3.0.2",
     "vue": "^3.2.37"
   },
   "devDependencies": {
@@ -39,7 +40,7 @@
     "vue-tsc": "^0.39.5"
   },
   "description": "一个函数库，工具类,兼容js,ts环境，包大小共50几KB,轻量实用,已有上百个方法,均通过jest单元测试自测，平时遇到需要自己写的utlis时会继续更新",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "directories": {
     "test": "test"
   },
