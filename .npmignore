@@ -25,3 +25,4 @@ gulpfile.js
 pnpm-lock.yaml
 index.html
 node_modules
+coverage

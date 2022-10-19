@@ -19,7 +19,7 @@ String
 public
 src
 index.js
-
+coverage
 
 # local env files
 .env.local
