@@ -10,7 +10,7 @@
 
 ## doc
 
-暂无,有计划做，具体使用可看单元测试
+函数库，工具类。文档预览：文档预览： https://tgbf2674.github.io/mmqUtils-page/guide/base.html
 
 ## install
 ```shell
