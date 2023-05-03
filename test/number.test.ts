@@ -454,4 +454,72 @@ describe('Number functions', () => {
       mmqUtils.divide(1e-7, 1e-3)
     ).toEqual(0.0001)
   })
+  test('commafy()', () => {
+    expect(
+      mmqUtils.commafy(0)
+    ).toEqual('0')
+    expect(
+      mmqUtils.commafy(-1)
+    ).toEqual('-1')
+    expect(
+      mmqUtils.commafy(12345)
+    ).toEqual('12,345')
+    expect(
+      mmqUtils.commafy(1e3)
+    ).toEqual('1,000')
+    expect(
+      mmqUtils.commafy(1e11)
+    ).toEqual('100,000,000,000')
+    expect(
+      mmqUtils.commafy(-1e3)
+    ).toEqual('-1,000')
+    expect(
+      mmqUtils.commafy(-1e11)
+    ).toEqual('-100,000,000,000')
+    expect(
+      mmqUtils.commafy(-0.0001)
+    ).toEqual('0')
+    expect(
+      mmqUtils.commafy(-0.0001, 2)
+    ).toEqual('0.00')
+    expect(
+      mmqUtils.commafy(-0.0001, 4)
+    ).toEqual('-0.0001')
+    expect(
+      mmqUtils.commafy(-100)
+    ).toEqual('-100')
+    expect(
+      mmqUtils.commafy(-1000)
+    ).toEqual('-1,000')
+    expect(
+      mmqUtils.commafy(-33.222)
+    ).toEqual('-33')
+    expect(
+      mmqUtils.commafy(-332536.222, 2)
+    ).toEqual('-332,536.22')
+    expect(
+      mmqUtils.commafy(123)
+    ).toEqual('123')
+    expect(
+      mmqUtils.commafy(100000)
+    ).toEqual('100,000')
+    expect(
+      mmqUtils.commafy(1000000)
+    ).toEqual('1,000,000')
+    expect(
+      mmqUtils.commafy(1000000, 2)
+    ).toEqual('1,000,000.00')
+    expect(
+      mmqUtils.commafy(1000000, 4)
+    ).toEqual('1,000,000.0000')
+    expect(
+      mmqUtils.commafy(1000000.22)
+    ).toEqual('1,000,000')
+    expect(
+      mmqUtils.commafy(1000000.555, 2)
+    ).toEqual('1,000,000.56')
+    expect(
+      mmqUtils.commafy(1000000.551, 2)
+    ).toEqual('1,000,000.55')
+  })
 })
