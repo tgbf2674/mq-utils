@@ -85,6 +85,8 @@ import {add} from './Number/add';
 import multiply from './Number/multiply';
 import subtract from './Number/subtract';
 import divide from './Number/divide';
+import commafy from './Number/commafy';
+import toNumMoneyToChinese from './Number/toNumMoneyToChinese';
 
 import toValueString from './String/toValueString';
 import trim from './String/trim';
@@ -95,12 +97,11 @@ import padStart from './String/padStart';
 import padEnd from './String/padEnd';
 import startsWith from './String/startsWith';
 import endsWith from './String/endsWith';
-import commafy from './Number/commafy';
 
 import unserialize from './Other/unserialize';
 import serialize from './Other/serialize';
 
-const mmqUtils = { isNaN, isFinite, isUndefined, isArray, isFloat, isInteger, isFunction, isBoolean, isString, isNumber, isRegExp, isObject, isRealObject, isDate, isValidDate, isError, isTypeError, isEmpty, isNull, isSymbol, isElement, isDocument, isWindow, isFormData, isMap, isWeakMap, isSet, isWeakSet, isLeapYear, getType, getSize, stringToJSON, JSONtoString, keys, values,entries, first, last, noop, throttle, debounce, arrayEach, now, toStringDate, timestamp, clear, random, min, max, round, toNumberString,toValueString, trim, trimLeft, trimRight, repeat, padStart, padEnd, startsWith, endsWith, unserialize, serialize, toNumber, toInteger, add, multiply, subtract, divide, lastArrayEach, arrayIndexOf, includeArrays, lastIndexOf, remove, shuffle, sample, toArray, sum, uniq, flat, toArrayTree, toTreeArray, searchTree, filterTree, eachTree, mapTree, clone, objectEach, toDateString, getWhatMonth, getWhatDay, getWhatYear, getDayOfYear, getYearDay, commafy }
+const mmqUtils = { isNaN, isFinite, isUndefined, isArray, isFloat, isInteger, isFunction, isBoolean, isString, isNumber, isRegExp, isObject, isRealObject, isDate, isValidDate, isError, isTypeError, isEmpty, isNull, isSymbol, isElement, isDocument, isWindow, isFormData, isMap, isWeakMap, isSet, isWeakSet, isLeapYear, getType, getSize, stringToJSON, JSONtoString, keys, values,entries, first, last, noop, throttle, debounce, arrayEach, now, toStringDate, timestamp, clear, random, min, max, round, toNumberString,toValueString, trim, trimLeft, trimRight, repeat, padStart, padEnd, startsWith, endsWith, unserialize, serialize, toNumber, toInteger, add, multiply, subtract, divide, lastArrayEach, arrayIndexOf, includeArrays, lastIndexOf, remove, shuffle, sample, toArray, sum, uniq, flat, toArrayTree, toTreeArray, searchTree, filterTree, eachTree, mapTree, clone, objectEach, toDateString, getWhatMonth, getWhatDay, getWhatYear, getDayOfYear, getYearDay, commafy, toNumMoneyToChinese }
 
-export { isNaN, isFinite, isUndefined, isArray, isFloat, isInteger, isFunction, isBoolean, isString, isNumber, isRegExp, isObject, isRealObject, isDate, isValidDate, isError, isTypeError, isEmpty, isNull, isSymbol, isElement, isDocument, isWindow, isFormData, isMap, isWeakMap, isSet, isWeakSet, isLeapYear, getType, getSize, stringToJSON, JSONtoString, keys, values,entries, first, last, noop, throttle, debounce, arrayEach, now, toStringDate, timestamp, clear, random, min, max, round, toNumberString,toValueString, trim, trimLeft, trimRight, repeat, padStart, padEnd, startsWith, endsWith, unserialize, serialize, toNumber, toInteger, add, multiply, subtract, divide, lastArrayEach, arrayIndexOf, includeArrays, lastIndexOf, remove, shuffle, sample, toArray, sum, uniq, flat, toArrayTree, toTreeArray, searchTree, filterTree, eachTree, mapTree, clone, objectEach, toDateString, getWhatMonth, getWhatDay, getWhatYear, getDayOfYear, getYearDay, commafy }
+export { isNaN, isFinite, isUndefined, isArray, isFloat, isInteger, isFunction, isBoolean, isString, isNumber, isRegExp, isObject, isRealObject, isDate, isValidDate, isError, isTypeError, isEmpty, isNull, isSymbol, isElement, isDocument, isWindow, isFormData, isMap, isWeakMap, isSet, isWeakSet, isLeapYear, getType, getSize, stringToJSON, JSONtoString, keys, values,entries, first, last, noop, throttle, debounce, arrayEach, now, toStringDate, timestamp, clear, random, min, max, round, toNumberString,toValueString, trim, trimLeft, trimRight, repeat, padStart, padEnd, startsWith, endsWith, unserialize, serialize, toNumber, toInteger, add, multiply, subtract, divide, lastArrayEach, arrayIndexOf, includeArrays, lastIndexOf, remove, shuffle, sample, toArray, sum, uniq, flat, toArrayTree, toTreeArray, searchTree, filterTree, eachTree, mapTree, clone, objectEach, toDateString, getWhatMonth, getWhatDay, getWhatYear, getDayOfYear, getYearDay, commafy, toNumMoneyToChinese }
 export default mmqUtils

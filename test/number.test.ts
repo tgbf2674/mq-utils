@@ -522,4 +522,12 @@ describe('Number functions', () => {
       mmqUtils.commafy(1000000.551, 2)
     ).toEqual('1,000,000.55')
   })
+  test('toNumMoneyToChinese()', () => {
+    expect(
+      mmqUtils.toNumMoneyToChinese(100000.123)
+    ).toEqual('壹拾万元壹角贰分叁毫')
+    expect(
+      mmqUtils.toNumMoneyToChinese(12345.123)
+    ).toEqual('壹万贰仟叁佰肆拾伍元壹角贰分叁毫')
+  })
 })
